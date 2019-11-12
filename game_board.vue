@@ -1,5 +1,5 @@
 <template>
-    <div class="board">
+    <div id="board">
         <div class="board-tile board-a2"><img :src="tile_img"></div>
         <div class="board-tile board-a3"><img :src="tile_img"></div>
         <div class="board-tile board-a1"><img :src="tile_img"></div>
@@ -12,16 +12,19 @@
     </div>
 </template>
 
-<script type="text/javascript">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
     var game_board = new Vue({
-        el: '.board',
+        el: '#board',
         data: {
             board_height: 3,
             board_width: 3,
-            tile: {
-                tile_name: 'Field',
-                tile_img: '../img/empty-tile.png'
-            }
+        }
+    });
+
+    var tile_field = new Vue({
+        el: '#tile',
+        data: {
+            tile_img: "../img/empty-tile.png"
         }
     });
 </script>
