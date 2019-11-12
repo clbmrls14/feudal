@@ -26,8 +26,7 @@ const figures = {
       type: 'royalty',
       horse: true,
     },
-    {
-     
+  ],
   soldiers: [
     {
       id: 1,
