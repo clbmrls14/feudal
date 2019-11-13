@@ -3,24 +3,35 @@
         <p>Hello</p>
         <p>{{tile_img}}</p>
         <div class="board-tile board-a2"><img :src="tile_img"></div>
-        <div class="board-tile board-a3"><img :src="tile_img"></div>
-        <div class="board-tile board-a1"><img :src="tile_img"></div>
-        <div class="board-tile board-b1"><img :src="tile_img"></div>
-        <div class="board-tile board-b2"><img :src="tile_img"></div>
-        <div class="board-tile board-b3"><img :src="tile_img"></div>
-        <div class="board-tile board-c1"><img :src="tile_img"></div>
-        <div class="board-tile board-c2"><img :src="tile_img"></div>
-        <div class="board-tile board-c3"><img :src="tile_img"></div>
+        <div class="board-tile board-a3"><img src=imgGet()></div>
+        <div class="board-tile board-a1"><img src=imgGet()></div>
+        <div class="board-tile board-b1"><img src=imgGet()></div>
+        <div class="board-tile board-b2"><img src=imgGet()></div>
+        <div class="board-tile board-b3"><img src=imgGet()></div>
+        <div class="board-tile board-c1"><img src=imgGet()></div>
+        <div class="board-tile board-c2"><img src=imgGet()></div>
+        <div class="board-tile board-c3"><img src=imgGet()></div>
     </div>
 </template>
 
 <script>
 export default {
     name: 'game_board',
-    data: function () {
-            return {tile_img: "./assets/img/tile_field.png"}
+    data: 
+        function imgGet () {
+            return {
+                tile_img: '../assets/img/tile_field.png'
+            }
         }
+        //tile_img: '../assets/img/tile_field.png'
+
 }
+// var board = new Vue({
+//         el: '#board',
+//         data: {
+//         tile_img: '../assets/img/tile_field.png'
+//     }
+//     })
     /*var game_board = new Vue({
         el: '#board',
         data: {
