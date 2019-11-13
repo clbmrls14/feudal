@@ -1,4 +1,4 @@
-const images = require.context('./images', true, /\.png$/);
+const images = require.context('../img', true, /\.png$/);
 
 const figures = {
   royalty: [
@@ -12,7 +12,7 @@ const figures = {
     },
     {
       id: 2,
-      description: 'The duke can move in any direction as many spaces as you want, cant cross swamps',
+      description: 'The duke can move in any direction as many spaces as you want, but cannot cross swamps',
       title: 'Duke',
       src: images('./head-friendly.png'),
       type: 'royalty',
@@ -20,7 +20,7 @@ const figures = {
     },
     {
       id: 3,
-      description:'The prince can move in any direction for any length, cant cross swamps',
+      description:'The prince can move in any direction for any length, but cannot cross swamps',
       title: 'Prince',
       src: images('./head-shredder.png'),
       type: 'royalty',
@@ -30,7 +30,7 @@ const figures = {
   soldiers: [
     {
       id: 1,
-      description: 'Can move like the horse in chess',
+      description: 'Moves one square horizontally or vertically, then one square diagonally',
       title: 'Squire',
       src: images('./arm-articulated-claw.png'),
       type: 'soldiers',
@@ -54,7 +54,7 @@ const figures = {
     },
     {
       id: 4,
-      description: 'Can move in three spaces or can shoot in three spaces ',
+      description: 'Can move in three spaces or can shoot in three spaces',
       title: 'Archer',
       src: images('./arm-articulated-claw.png'),
       type: 'soldiers',
