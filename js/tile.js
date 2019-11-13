@@ -6,7 +6,7 @@ const tiles = {
             id: 0,
             description: 'All figures can move on field tiles.',
             title: 'Field',
-            src: imgages('./tile_field.png')
+            src: images('./tile_field.png')
         },
         {
             id: 1,
