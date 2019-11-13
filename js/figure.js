@@ -8,7 +8,7 @@ const figures = {
       title: 'King',
       src: images('./'),
       type: 'royalty',
-      horse: true,
+      horse: false,
     },
     {
       id: 2,
