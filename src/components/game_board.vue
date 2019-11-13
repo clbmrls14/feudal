@@ -17,8 +17,8 @@
 <script>
 export default {
     name: 'game_board',
-    data: {
-            tile_img: "../img/tile_field.png"
+    data: function () {
+            return {tile_img: "./assets/img/tile_field.png"}
         }
 }
     /*var game_board = new Vue({
