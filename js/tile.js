@@ -6,19 +6,19 @@ const tiles = {
             id: 0,
             description: 'All figures can move on field tiles.',
             title: 'Field',
-            src: imgages('')
+            src: imgages('./tile_field.png')
         },
         {
             id: 1,
             description: 'Mounted figures may not move through the swamp.',
             title: 'Swamp',
-            src: images('')
+            src: images('./tile_swamp.png')
         },
         {
             id: 2,
             description: 'No characters may move through the mountain.',
             title: 'Mountain',
-            src: images('')
+            src: images('./tile_mountain.png')
         }
     ]
 };

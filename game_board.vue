@@ -24,7 +24,7 @@
     var tile_field = new Vue({
         el: '#tile',
         data: {
-            tile_img: "../img/empty-tile.png"
+            tile_img: "../img/tile_field.png"
         }
     });
 </script>
