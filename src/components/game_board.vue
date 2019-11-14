@@ -27,7 +27,7 @@ export default {
                 game,
                 tileX: 1,
                 tileY: 1,
-                figType: 0
+                //figType: 0
             }
         },
     computed: {
@@ -36,12 +36,12 @@ export default {
                 tile: tile_board[this.tileX][this.tileY]
             }
         },
-        selectedFigure (figType) {
+        /*selectedFigure (figType) {
             return {
                 royalty: figures.royaltys[this.figType],
                 solider: figures.soldiers[this.figType]
             }
-        }
+        }*/
     },
     methods: {
         selectTileIndex() {
