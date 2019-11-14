@@ -1,4 +1,4 @@
-const images = require.context('../img', true, /\.png$/);
+const images = require.context('../assets/img', true, /\.png$/);
 
 const tiles = {
     tile: [
@@ -12,13 +12,14 @@ const tiles = {
             id: 1,
             description: 'Mounted figures may not move through the swamp.',
             title: 'Swamp',
-            src: images('./tile_swamp.png')
+            src: images('./swamp.png')
         },
         {
             id: 2,
             description: 'No characters may move through the mountain.',
             title: 'Mountain',
-            src: images('./tile_mountain.png')
+            src: images('./mountain.png')
         }
     ]
 };
+export default tiles;

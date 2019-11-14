@@ -1,8 +1,8 @@
 <template>
     <div id="board">
         <p>Hello</p>
-        <p>{{tile_img}}</p>
-        <div class="board-tile board-a2"><img :src="tile_img"></div>
+        <p>{{selectedTile.tile.src}}</p>
+        <div class="board-tile board-a2"><img :src="selectedTile.tile.src"></div>
         <div class="board-tile board-a3"><img src=imgGet()></div>
         <div class="board-tile board-a1"><img src=imgGet()></div>
         <div class="board-tile board-b1"><img src=imgGet()></div>
@@ -15,17 +15,23 @@
 </template>
 
 <script>
+import tiles from '../assets/data/js/tile';
 export default {
     name: 'game_board',
-    data: 
-        function imgGet () {
+    data () {
             return {
-                tile_img: '../assets/img/tile_field.png'
+               tiles
+            }
+        },
+       computed: {
+        selectedTile () {
+            return {
+                tile: tiles.tile[1]
             }
         }
-        //tile_img: '../assets/img/tile_field.png'
-
+    } //tile_img: '../assets/img/tile_field.png'
 }
+    
 // var board = new Vue({
 //         el: '#board',
 //         data: {
@@ -39,7 +45,7 @@ export default {
             board_width: 3,
         }
     });*/
-        
+    
 </script>
 
 <style scoped>
