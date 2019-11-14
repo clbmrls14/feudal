@@ -2,20 +2,20 @@
     <div id="board">
         <p>Hello</p>
         <p>{{selectedTile.tile.src}}</p>
-        <div class="board-tile board-a2"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-a3"><img src=imgGet()></div>
-        <div class="board-tile board-a1"><img src=imgGet()></div>
-        <div class="board-tile board-b1"><img src=imgGet()></div>
-        <div class="board-tile board-b2"><img src=imgGet()></div>
-        <div class="board-tile board-b3"><img src=imgGet()></div>
-        <div class="board-tile board-c1"><img src=imgGet()></div>
-        <div class="board-tile board-c2"><img src=imgGet()></div>
-        <div class="board-tile board-c3"><img src=imgGet()></div>
+        <div class="tile board-a2"><img :src="selectedTile.tile.src"></div>
+        <div class="tile board-a3"><img src=imgGet()></div>
+        <div class="tile board-a1"><img src=imgGet()></div>
+        <div class="tile board-b1"><img src=imgGet()></div>
+        <div class="tile board-b2"><img src=imgGet()></div>
+        <div class="tile board-b3"><img src=imgGet()></div>
+        <div class="tile board-c1"><img src=imgGet()></div>
+        <div class="tile board-c2"><img src=imgGet()></div>
+        <div class="tile board-c3"><img src=imgGet()></div>
     </div>
 </template>
 
 <script>
-import tiles from '../assets/data/js/tile';
+import tiles from '../assets/data/tile';
 export default {
     name: 'game_board',
     data () {
@@ -60,5 +60,8 @@ export default {
         ;
         grid-gap: 10px;
         justify-content: center;
+    }
+    .tile {
+        size: 50%;
     }
 </style>
