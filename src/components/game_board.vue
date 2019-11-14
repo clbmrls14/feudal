@@ -1,35 +1,39 @@
 <template>
     <div id="board">
-        <p>Hello</p>
-        <p>{{selectedTile.tile.src}}</p>
-        <div class="tile board-a2"><img :src="selectedTile.tile.src"></div>
-        <div class="tile board-a3"><img src=imgGet()></div>
-        <div class="tile board-a1"><img src=imgGet()></div>
-        <div class="tile board-b1"><img src=imgGet()></div>
-        <div class="tile board-b2"><img src=imgGet()></div>
-        <div class="tile board-b3"><img src=imgGet()></div>
-        <div class="tile board-c1"><img src=imgGet()></div>
-        <div class="tile board-c2"><img src=imgGet()></div>
-        <div class="tile board-c3"><img src=imgGet()></div>
+        <div class="board-tile board-a2"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-a3"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-a1"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-b1"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-b2"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-b3"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-c1"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-c2"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-c3"><img :src="selectedTile.tile.src"></div>
     </div>
 </template>
 
 <script>
-import tiles from '../assets/data/tile';
+import tiles from '../data/tile';
 export default {
     name: 'game_board',
     data () {
             return {
-               tiles
+               tiles,
+               tileType: 0
             }
         },
-       computed: {
-        selectedTile () {
+    computed: {
+        selectedTile (tileType) {
             return {
-                tile: tiles.tile[1]
+                tile: tiles.tile[this.tileType]
             }
         }
-    } //tile_img: '../assets/img/tile_field.png'
+    },
+    methods: {
+        selectTileIndex() {
+            return 0;
+        }
+    }
 }
     
 // var board = new Vue({
@@ -49,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-    div.board {
+    div#board {
         display: grid;
         grid-template-columns: auto auto auto;
         grid-template-rows: auto auto auto;
