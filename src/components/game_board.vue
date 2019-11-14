@@ -26,7 +26,8 @@ export default {
                 tile_board,
                 game,
                 tileX: 1,
-                tileY: 1
+                tileY: 1,
+                figType: 0
             }
         },
     computed: {
