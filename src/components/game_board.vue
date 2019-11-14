@@ -40,19 +40,6 @@ export default {
     }
 }
     
-// var board = new Vue({
-//         el: '#board',
-//         data: {
-//         tile_img: '../assets/img/tile_field.png'
-//     }
-//     })
-    /*var game_board = new Vue({
-        el: '#board',
-        data: {
-            board_height: 3,
-            board_width: 3,
-        }
-    });*/
     
 </script>
 
