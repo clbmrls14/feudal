@@ -18,7 +18,7 @@
 
 <script>
 import game from '../data/tile';
-import tile_board from '../data/board';
+import tile_board from '../data/tile';
 export default {
     name: 'game_board',
     data () {
