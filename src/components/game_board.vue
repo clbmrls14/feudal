@@ -1,4 +1,7 @@
 <template>
+<main>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <h1>Feudal, a game of Love and War</h1>
     <div id="board">
         <div class="board-tile board-a2"><img :src="selectedTile.tile.src"></div>
         <div class="board-tile board-a3"><img :src="selectedTile.tile.src"></div>
@@ -10,6 +13,7 @@
         <div class="board-tile board-c2"><img :src="selectedTile.tile.src"></div>
         <div class="board-tile board-c3"><img :src="selectedTile.tile.src"></div>
     </div>
+</main>
 </template>
 
 <script>
@@ -53,6 +57,10 @@ export default {
 </script>
 
 <style scoped>
+    h1 {
+        font-family: 'Cinzel Decorative', cursive;
+        padding: 1em;
+    }
     div#board {
         display: grid;
         grid-template-columns: auto auto auto;
@@ -65,7 +73,7 @@ export default {
         grid-gap: 10px;
         justify-content: center;
     }
-    .tile {
-        size: 50%;
+    img {
+        height: 50%;
     }
 </style>
