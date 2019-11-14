@@ -3,33 +3,36 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
-        <div class="board-tile board-a2"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-a3"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-a1"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-b1"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-b2"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-b3"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-c1"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-c2"><img :src="selectedTile.tile.src"></div>
-        <div class="board-tile board-c3"><img :src="selectedTile.tile.src"></div>
+        <div class="board-tile board-a2"><img :src="tile_board[0][0].src"></div>
+        <div class="board-tile board-a3"><img :src="tile_board[0][1].src"></div>
+        <div class="board-tile board-a1"><img :src="tile_board[0][2].src"></div>
+        <div class="board-tile board-b1"><img :src="tile_board[1][0].src"></div>
+        <div class="board-tile board-b2"><img :src="tile_board[1][1].src"></div>
+        <div class="board-tile board-b3"><img :src="tile_board[1][2].src"></div>
+        <div class="board-tile board-c1"><img :src="tile_board[2][0].src"></div>
+        <div class="board-tile board-c2"><img :src="tile_board[2][1].src"></div>
+        <div class="board-tile board-c3"><img :src="tile_board[2][2].src"></div>
     </div>
 </main>
 </template>
 
 <script>
-import tiles from '../data/tile';
+import game from '../data/tile';
+import tile_board from '../data/board';
 export default {
     name: 'game_board',
     data () {
             return {
-               tiles,
-               tileType: 0
+                tile_board,
+                game,
+                tileX: 1,
+                tileY: 1
             }
         },
     computed: {
-        selectedTile (tileType) {
+        selectedTile (tileX, tileY) {
             return {
-                tile: tiles.tile[this.tileType]
+                tile: tile_board[this.tileX][this.tileY]
             }
         }
     },
@@ -50,8 +53,8 @@ export default {
     }
     div#board {
         display: grid;
-        grid-template-columns: auto auto auto;
-        grid-template-rows: auto auto auto;
+        grid-template-columns: 10em 10em 10em;
+        grid-template-rows: 10em 10em 10em;
         grid-template-areas:
             'a1 a2 a3'
             'b1 b2 b3'
@@ -61,6 +64,8 @@ export default {
         justify-content: center;
     }
     img {
-        height: 50%;
+        height: 100%;
+        width: auto;
+        /*height: 50%;*/
     }
 </style>
