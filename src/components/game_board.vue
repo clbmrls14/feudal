@@ -26,7 +26,8 @@ export default {
                 tile_board,
                 game,
                 tileX: 1,
-                tileY: 1
+                tileY: 1,
+                //figType: 0
             }
         },
     computed: {
@@ -34,14 +35,28 @@ export default {
             return {
                 tile: tile_board[this.tileX][this.tileY]
             }
-        }
+        },
+        /*selectedFigure (figType) {
+            return {
+                royalty: figures.royaltys[this.figType],
+                solider: figures.soldiers[this.figType]
+            }
+        }*/
     },
     methods: {
         selectTileIndex() {
             return 0;
+        },
+        swapTile () {
+            //return selectedFigure.royalty.src
+        var bigImg = document.querySelector('#board');
+
+        bigImg.setAttribute('src', e.target.src.replace('selectedTile.tile.src', 'selectedFigure.royalty.src'));
+
         }
     }
-}
+
+}       
     
     
 </script>
