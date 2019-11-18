@@ -36,24 +36,23 @@ export default {
                 tile: tile_board[this.tileX][this.tileY]
             }
         },
-        /*selectedFigure (figType) {
+        selectedFigure (figType) {
             return {
                 royalty: figures.royaltys[this.figType],
                 solider: figures.soldiers[this.figType]
             }
-        }*/
+        }
     },
     methods: {
         selectTileIndex() {
             return 0;
         },
-        swapTile () {
+        //swapTile () {
             //return selectedFigure.royalty.src
-        var bigImg = document.querySelector('#board');
+       //$('#board').attr('src', $(this).attr('src').replace('selectedTile.tile.src', 'selectedFigure.royalty.src'));
+        
 
-        bigImg.setAttribute('src', e.target.src.replace('selectedTile.tile.src', 'selectedFigure.royalty.src'));
-
-        }
+        //}
     }
 
 }       
