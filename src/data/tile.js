@@ -88,8 +88,8 @@ const game = {
            {
              id: 5,
              description: 'Can move once diagonally or up to 12 forward/backward or from side to side',
-             title: 'pikemen',
-             src: images('./figure_pikeman_white_field.png'),
+             title: 'Pikemen',
+             src: images('./test_figure.png'),
              royalty: false,
              horse: false,
            },
@@ -102,13 +102,22 @@ const game = {
              horse: false,
            },
            {
-            id: 7,
+             id: 7,
              description: 'Can move up to 12 spaces diagonally or 1 forward/backward or side to side',
              title: 'Sergeant',
              src: images('./figure_pikeman_orange_field.png'),
              royalty: false,
              horse: false,
+          },
+          {
+             id: 8,
+             description: 'No figure',
+             title: 'none',
+             src: images('./nothing.png'),
+             royalty: false,
+             horse: false,
           }
+
      ],
 };
 
