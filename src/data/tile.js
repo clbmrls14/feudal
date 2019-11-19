@@ -26,6 +26,22 @@ const game = {
             src: images('./tile_mountain.png'),
             mountain: true,
             swamp: false
+        },
+        {
+            id: 3,
+            description: 'Archers and squires may not move on their own castle green.',
+            title: 'Castle Green',
+            src: images('./tile_castlegreen.png'),
+            mountain: false,
+            swamp: false
+        },
+        {
+            id: 4,
+            description: 'Archers and squires may not enter the castle. When an enemy enters your castle, you lose.',
+            title: 'Castle',
+            src: images('./tile_castle.png'),
+            mountain: false,
+            swamp: false
         }
     ],
      figures: [
