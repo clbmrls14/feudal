@@ -75,15 +75,12 @@ export default {
     methods: {
         say: function (message) {
             alert(message)
-    }
+    },
         // selectTileIndex() {
         //     return 0;
         // },
-        //swapTile () {
-            //return selectedFigure.royalty.src
-       //$('#board').attr('src', $(this).attr('src').replace('selectedTile.tile.src', 'selectedFigure.royalty.src'));
-        
-
+        //swapTile (tile) {
+            
         //}
     }
 
