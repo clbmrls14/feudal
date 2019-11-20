@@ -3,43 +3,45 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
-        <div class="board-tile board-a2">
-            <img class="tile_img" :src="tile_board[0][0].src" v-on:click="say(tile_board[0][0].description)">
+        <div class="board-tile board-a2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <!-- <img class="tile_img" :src="tile_board[0][0].src" v-on:click="say(tile_board[0][0].description)"> -->
+            <img class="tile_img" :src="tile_board[0][0].src" >
             <img class="fig_img" :src="fig_board[0][0].src" v-on:click="say(fig_board[0][0].description)">
         </div>
-        <div class="board-tile board-a3">
-            <img :src="tile_board[0][1].src" v-on:click="say(tile_board[0][1].description)">
-            <img class="fig_img" :src="fig_board[0][1].src" v-on:click="say(fig_board[0][1].description)">
+        <div class="board-tile board-a3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[0][1].src">
+            <img class="fig_img" :src="fig_board[0][1].src" >
         </div>
-        <div class="board-tile board-a1">
-            <img :src="tile_board[0][2].src" v-on:click="say(tile_board[0][2].description)">
+        <div class="board-tile board-a1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[0][2].src">
             <img class="fig_img" :src="fig_board[0][2].src" v-on:click="say(fig_board[0][2].description)">
         </div>
-        <div class="board-tile board-b1">
-            <img :src="tile_board[1][0].src" v-on:click="say(tile_board[1][0].description)">
+        <div class="board-tile board-b1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[1][0].src">
             <img class="fig_img" :src="fig_board[1][0].src" v-on:click="say(fig_board[1][0].description)">
         </div>
-        <div class="board-tile board-b2">
-            <img :src="tile_board[1][1].src" v-on:click="say(tile_board[1][1].description)">
+        <div class="board-tile board-b2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[1][1].src">
             <img class="fig_img" :src="fig_board[1][1].src" v-on:click="say(fig_board[1][1].description)">
         </div>
-        <div class="board-tile board-b3">
-            <img :src="tile_board[1][2].src" v-on:click="say(tile_board[1][2].description)">
+        <div class="board-tile board-b3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[1][2].src">
             <img class="fig_img" :src="fig_board[1][2].src" v-on:click="say(fig_board[1][2].description)">
         </div>
-        <div class="board-tile board-c1">
-            <img :src="tile_board[2][0].src" v-on:click="say(tile_board[2][0].description)">
+        <div class="board-tile board-c1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[2][0].src">
             <img class="fig_img" :src="fig_board[2][0].src" v-on:click="say(fig_board[2][0].description)">
         </div>
-        <div class="board-tile board-c2">
-            <img :src="tile_board[2][1].src" v-on:click="say(tile_board[2][1].description)">
+        <div class="board-tile board-c2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[2][1].src">
             <img class="fig_img" :src="fig_board[2][1].src" v-on:click="say(fig_board[2][1].description)">
         </div>
-        <div class="board-tile board-c3">
-            <img :src="tile_board[2][2].src" v-on:click="say(tile_board[2][2].description)">
+        <div class="board-tile board-c3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+            <img :src="tile_board[2][2].src">
             <img class="fig_img" :src="fig_board[2][2].src" v-on:click="say(fig_board[2][2].description)">
         </div>
     </div>
+    <span v-if="tile_hover">Hovering a tile</span>
 </main>
 </template>
 
@@ -54,24 +56,25 @@ export default {
                 tile_board,
                 fig_board,
                 game,
-                tileX: 1,
-                tileY: 1,
+                tile_hover: false,
+                // tileX: 1,
+                // tileY: 1,
                 //figType: 0
             }
         },
-    computed: {
-        selectedTile (tileX, tileY) {
-            return {
-                tile: tile_board[this.tileX][this.tileY]
-            }
-        },
-        selectedFigure (figType) {
-            return {
-                royalty: figures.royaltys[this.figType],
-                solider: figures.soldiers[this.figType]
-            }
-        }
-    },
+    // computed: {
+    //     selectedTile (tileX, tileY) {
+    //         return {
+    //             tile: tile_board[this.tileX][this.tileY]
+    //         }
+    //     },
+    //     selectedFigure (figType) {
+    //         return {
+    //             royalty: figures.royaltys[this.figType],
+    //             solider: figures.soldiers[this.figType]
+    //         }
+    //     }
+    // },
     methods: {
         say: function (message) {
             alert(message)
@@ -113,10 +116,18 @@ export default {
     }
     .fig_img {
         position: relative;
-        top: -10em;
+        top: -10.2em;
         z-index: 10;
     }
     .tile_img {
         z-index: -1;
+    }
+    span {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 200%;
+        padding: 2em;
+        border: 2px solid black;
+        position: absolute;
+        align-content: center;
     }
 </style>
