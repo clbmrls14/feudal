@@ -115,6 +115,8 @@ export default {
         /*height: 50%;*/
     }
     .fig_img {
+        position: relative;
+        top: -10em;
         z-index: 10;
     }
     .tile_img {
