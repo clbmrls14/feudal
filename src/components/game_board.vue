@@ -4,11 +4,11 @@
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
         <div class="board-tile board-a2">
-            <img class="tile_img" :src="tile_board[0][0].src">
+            <img class="tile_img" :src="tile_board[0][0].src" v-on:click="say(tile_board[0][0].description)">
             <img class="fig_img" :src="fig_board[0][0].src" v-on:click="say(fig_board[0][0].description)">
         </div>
         <div class="board-tile board-a3">
-            <img :src="tile_board[0][1].src">
+            <img :src="tile_board[0][1].src" v-on:click="say(tile_board[0][1].description)">
             <img class="fig_img" :src="fig_board[0][1].src" v-on:click="say(fig_board[0][1].description)">
         </div>
         <div class="board-tile board-a1">
