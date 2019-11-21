@@ -128,9 +128,10 @@ export default {
     span {
         font-family: 'Cinzel Decorative', cursive;
         font-size: 200%;
-        padding: 2em;
+        padding: 1em;
         border: 2px solid black;
-        position: absolute;
-        align-content: center;
+        position: relative;
+        top: 4em;
+        justify-content: left;
     }
 </style>
