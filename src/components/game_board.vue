@@ -3,8 +3,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
-        <div class="board-tile board-a2" @mouseover="tile_hover = tile_board[0][0].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[0][0].src" >
+        <div class="board-tile board-a2" @mouseover="tile_hover = tile_board[0][0].title" @mouseleave="tile_hover = false" @click="move(0, 0)">
+            <img class="tile_img" :src="tile_board[0][0].src">
             <img class="fig_img" :src="fig_board[0][0].src" @mouseover="fig_hover = fig_board[0][0].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-a3" @mouseover="tile_hover = tile_board[0][1].title" @mouseleave="tile_hover = false">
@@ -57,7 +57,8 @@ export default {
                 fig_board,
                 game,
                 tile_hover: false,
-                fig_hover: false
+                fig_hover: false,
+                figId: 8,
                 // tileX: 1,
                 // tileY: 1,
                 //figType: 0
@@ -82,13 +83,15 @@ export default {
     },
         getTileName: function (tile_name) {
             return tile.title
-        }
+        },
         // selectTileIndex() {
         //     return 0;
         // },
-        //swapTile (tile) {
-            
-        //}
+        move (x, y) {
+             alert("this is the x and y coordinates " + x + " "+ y)
+             figId = 5
+             fig_board[x][y].id = this.figId
+        }
     }
 
 }       
