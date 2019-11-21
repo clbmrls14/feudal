@@ -3,45 +3,44 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
-        <div class="board-tile board-a2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
-            <!-- <img class="tile_img" :src="tile_board[0][0].src" v-on:click="say(tile_board[0][0].description)"> -->
+        <div class="board-tile board-a2" @mouseover="tile_hover = tile_board[0][0].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[0][0].src" >
             <img class="fig_img" :src="fig_board[0][0].src" v-on:click="say(fig_board[0][0].description)">
         </div>
-        <div class="board-tile board-a3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-a3" @mouseover="tile_hover = tile_board[0][1].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[0][1].src">
             <img class="fig_img" :src="fig_board[0][1].src" >
         </div>
-        <div class="board-tile board-a1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-a1" @mouseover="tile_hover = tile_board[0][2].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[0][2].src">
             <img class="fig_img" :src="fig_board[0][2].src" v-on:click="say(fig_board[0][2].description)">
         </div>
-        <div class="board-tile board-b1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-b1" @mouseover="tile_hover = tile_board[1][0].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[1][0].src">
             <img class="fig_img" :src="fig_board[1][0].src" v-on:click="say(fig_board[1][0].description)">
         </div>
-        <div class="board-tile board-b2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-b2" @mouseover="tile_hover = tile_board[1][1].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[1][1].src">
             <img class="fig_img" :src="fig_board[1][1].src" v-on:click="say(fig_board[1][1].description)">
         </div>
-        <div class="board-tile board-b3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-b3" @mouseover="tile_hover = tile_board[1][2].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[1][2].src">
             <img class="fig_img" :src="fig_board[1][2].src" v-on:click="say(fig_board[1][2].description)">
         </div>
-        <div class="board-tile board-c1" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-c1" @mouseover="tile_hover = tile_board[2][0].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[2][0].src">
             <img class="fig_img" :src="fig_board[2][0].src" v-on:click="say(fig_board[2][0].description)">
         </div>
-        <div class="board-tile board-c2" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-c2" @mouseover="tile_hover = tile_board[2][1].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[2][1].src">
             <img class="fig_img" :src="fig_board[2][1].src" v-on:click="say(fig_board[2][1].description)">
         </div>
-        <div class="board-tile board-c3" @mouseover="tile_hover = true" @mouseleave="tile_hover = false">
+        <div class="board-tile board-c3" @mouseover="tile_hover = tile_board[2][2].title" @mouseleave="tile_hover = false">
             <img :src="tile_board[2][2].src">
             <img class="fig_img" :src="fig_board[2][2].src" v-on:click="say(fig_board[2][2].description)">
         </div>
     </div>
-    <span v-if="tile_hover">Hovering a tile</span>
+    <span v-if="tile_hover">{{ tile_hover }}</span>
 </main>
 </template>
 
@@ -79,6 +78,9 @@ export default {
         say: function (message) {
             alert(message)
     },
+        getTileName: function (tile_name) {
+            return tile.title
+        }
         // selectTileIndex() {
         //     return 0;
         // },
