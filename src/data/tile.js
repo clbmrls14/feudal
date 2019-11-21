@@ -88,7 +88,7 @@ const game = {
            {
              id: 5,
              description: 'Can move once diagonally or up to 12 forward/backward or from side to side',
-             title: 'Pikemen',
+             title: 'Pikeman',
              src: images('./test_figure.png'),
              royalty: false,
              horse: false,
