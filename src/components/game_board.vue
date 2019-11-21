@@ -12,11 +12,11 @@
             <img class="fig_img" :src="fig_board[0][1].src" @mouseover="fig_hover = fig_board[0][1].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-a1" @mouseover="tile_hover = tile_board[0][2].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[0][2].src">
+            <img class="tile_img" :src="tile_board[0][2].src">
             <img class="fig_img" :src="fig_board[0][2].src" @mouseover="fig_hover = fig_board[0][2].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b1" @mouseover="tile_hover = tile_board[1][0].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[1][0].src">
+            <img class="tile_img" :src="tile_board[1][0].src">
             <img class="fig_img" :src="fig_board[1][0].src" @mouseover="fig_hover = fig_board[1][0].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b2" @mouseover="tile_hover = tile_board[1][1].title" @mouseleave="tile_hover = false">
@@ -24,19 +24,19 @@
             <img class="fig_img" :src="fig_board[1][1].src" @mouseover="fig_hover = fig_board[1][1].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b3" @mouseover="tile_hover = tile_board[1][2].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[1][2].src">
+            <img class="tile_img" :src="tile_board[1][2].src">
             <img class="fig_img" :src="fig_board[1][2].src" @mouseover="fig_hover = fig_board[1][2].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c1" @mouseover="tile_hover = tile_board[2][0].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[2][0].src">
+            <img class="tile_img" :src="tile_board[2][0].src">
             <img class="fig_img" :src="fig_board[2][0].src" @mouseover="fig_hover = fig_board[2][0].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c2" @mouseover="tile_hover = tile_board[2][1].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[2][1].src">
+            <img class="tile_img" :src="tile_board[2][1].src">
             <img class="fig_img" :src="fig_board[2][1].src" @mouseover="fig_hover = fig_board[2][1].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c3" @mouseover="tile_hover = tile_board[2][2].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[2][2].src">
+            <img class="tile_img" :src="tile_board[2][2].src">
             <img class="fig_img" :src="fig_board[2][2].src" @mouseover="fig_hover = fig_board[2][2].title" @mouseleave="fig_hover = false">
         </div>
     </div>
