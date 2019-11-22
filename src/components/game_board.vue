@@ -5,39 +5,39 @@
     <div id="board">
         <div class="board-tile board-a2" @mouseover="tile_hover = tile_board[0][0].title" @mouseleave="tile_hover = false" @click="move(0, 0)">
             <img class="tile_img" :src="tile_board[0][0].src">
-            <img class="fig_img" :src="fig_board[0][0].src" @mouseover="fig_hover = fig_board[0][0].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][0]].src" @mouseover="fig_hover = game.figures[fig_board[0][0]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-a3" @mouseover="tile_hover = tile_board[0][1].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[0][1].src">
-            <img class="fig_img" :src="fig_board[0][1].src" @mouseover="fig_hover = fig_board[0][1].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][1]].src" @mouseover="fig_hover =game.figures[fig_board[0][1]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-a1" @mouseover="tile_hover = tile_board[0][2].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[0][2].src">
-            <img class="fig_img" :src="fig_board[0][2].src" @mouseover="fig_hover = fig_board[0][2].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][2]].src" @mouseover="fig_hover = game.figures[fig_board[0][2]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b1" @mouseover="tile_hover = tile_board[1][0].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[1][0].src">
-            <img class="fig_img" :src="fig_board[1][0].src" @mouseover="fig_hover = fig_board[1][0].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[1][0]].srcc" @mouseover="fig_hover = game.figures[fig_board[1][0]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b2" @mouseover="tile_hover = tile_board[1][1].title" @mouseleave="tile_hover = false">
-            <img :src="tile_board[1][1].src">
-            <img class="fig_img" :src="fig_board[1][1].src" @mouseover="fig_hover = fig_board[1][1].title" @mouseleave="fig_hover = false">
+            <img  class="tile_img" :src="tile_board[1][1].src">
+            <img class="fig_img" :src="game.figures[fig_board[1][1]].src" @mouseover="fig_hover = game.figures[fig_board[1][1]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-b3" @mouseover="tile_hover = tile_board[1][2].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[1][2].src">
-            <img class="fig_img" :src="fig_board[1][2].src" @mouseover="fig_hover = fig_board[1][2].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[1][2]].src" @mouseover="fig_hover = game.figures[fig_board[1][2]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c1" @mouseover="tile_hover = tile_board[2][0].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[2][0].src">
-            <img class="fig_img" :src="fig_board[2][0].src" @mouseover="fig_hover = fig_board[2][0].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][0]].src" @mouseover="fig_hover = game.figures[fig_board[2][0]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c2" @mouseover="tile_hover = tile_board[2][1].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[2][1].src">
-            <img class="fig_img" :src="fig_board[2][1].src" @mouseover="fig_hover = fig_board[2][1].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][1]].src" @mouseover="fig_hover = game.figures[fig_board[2][1]].title" @mouseleave="fig_hover = false">
         </div>
         <div class="board-tile board-c3" @mouseover="tile_hover = tile_board[2][2].title" @mouseleave="tile_hover = false">
             <img class="tile_img" :src="tile_board[2][2].src">
-            <img class="fig_img" :src="fig_board[2][2].src" @mouseover="fig_hover = fig_board[2][2].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][2]].src" @mouseover="fig_hover = game.figures[fig_board[2][2]].title" @mouseleave="fig_hover = false">
         </div>
     </div>
     <span v-if="tile_hover">{{ tile_hover }}</span>
@@ -58,7 +58,7 @@ export default {
                 game,
                 tile_hover: false,
                 fig_hover: false,
-                figId: 8,
+                //figId: 8,
                 // tileX: 1,
                 // tileY: 1,
                 //figType: 0
@@ -89,8 +89,8 @@ export default {
         // },
         move (x, y) {
              alert("this is the x and y coordinates " + x + " "+ y)
-             figId = 5
-             fig_board[x][y].id = this.figId
+             
+             fig_board[x][y] = 5
         }
     }
 
