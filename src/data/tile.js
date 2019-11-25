@@ -4,45 +4,53 @@ const game = {
     tile: [
         {
             id: 0,
-            description: 'All figures can move on field tiles.',
+            description: 'Fields are easy to cross.',
             title: 'Field',
             src: images('./tile_field.png'),
-            mountain: false,
+            passable: true,
             swamp: false
 
         },
         {
             id: 1,
-            description: 'Mounted figures may not move through the swamp.',
+            description: 'The swamp is treacherous, horses may not enter.',
             title: 'Swamp',
             src: images('./tile_swamp.png'),
-            mountain: false,
+            passable: true,
             swamp: true
         },
         {
             id: 2,
-            description: 'No characters may move through the mountain.',
+            description: 'You may not move through the mountain.',
             title: 'Mountain',
             src: images('./tile_mountain.png'),
-            mountain: true,
+            passable: true,
             swamp: false
         },
         {
             id: 3,
-            description: 'Archers and squires may not move on their own castle green.',
-            title: 'Castle Green',
-            src: images('./tile_castlegreen.png'),
-            mountain: false,
+            description: 'Villages may contain new opportunities.',
+            title: 'Village',
+            src: images('./tile_village.png'),
+            passable: true,
             swamp: false
         },
         {
             id: 4,
             description: 'Archers and squires may not enter the castle. When an enemy enters your castle, you lose.',
             title: 'Castle',
-            src: images('./tile_castle.png'),
-            mountain: false,
+            src: images('./tile_village.png'),
+            passable: true,
             swamp: false
-        }
+        },
+        {
+          id: 5,
+          description: 'You cannot move through a lake.',
+          title: 'Lake',
+          src: images('./tile_lake.png'),
+          passable: false,
+          swamp: false
+      }
     ],
      figures: [
          {
