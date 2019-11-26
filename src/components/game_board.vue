@@ -90,7 +90,7 @@ export default {
         move (x, y) {
              alert("this is the x and y coordinates " + x + " "+ y)
              
-             fig_board[x][y] = 5
+             fig_board[x][y] = 1
         }
     }
 
