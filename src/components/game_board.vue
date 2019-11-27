@@ -3,6 +3,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
+        <!-- Column 1 -->
         <div class="board-tile board-a2" @mouseover="tile_hover = map_grid[0][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 0)">
             <img class="tile_img" :src="map_grid[0][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][0]].src">
@@ -15,6 +16,16 @@
             <img class="tile_img" :src="map_grid[0][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][2]].src">
         </div>
+        <div class="board-tile board-a1" @mouseover="tile_hover = map_grid[0][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 3)">
+            <img class="tile_img" :src="map_grid[0][3].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[0][3]].src">
+        </div>
+        <div class="board-tile board-a1" @mouseover="tile_hover = map_grid[0][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 4)">
+            <img class="tile_img" :src="map_grid[0][4].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[0][4]].src">
+        </div>
+
+        <!-- Column 2 -->
         <div class="board-tile board-b1" @mouseover="tile_hover = map_grid[1][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 0)">
             <img class="tile_img" :src="map_grid[1][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][0]].src">
@@ -27,6 +38,16 @@
             <img class="tile_img" :src="map_grid[1][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][2]].src">
         </div>
+        <div class="board-tile board-b3" @mouseover="tile_hover = map_grid[1][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 3)">
+            <img class="tile_img" :src="map_grid[1][3].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[1][3]].src">
+        </div>
+        <div class="board-tile board-b3" @mouseover="tile_hover = map_grid[1][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 4)">
+            <img class="tile_img" :src="map_grid[1][4].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[1][4]].src">
+        </div>
+        
+        <!-- Column 3 -->
         <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[2][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 0)">
             <img class="tile_img" :src="map_grid[2][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][0]].src">
@@ -39,6 +60,61 @@
             <img class="tile_img" :src="map_grid[2][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][2]].src">
         </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[2][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 3)">
+            <img class="tile_img" :src="map_grid[2][3].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[2][3]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[2][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 4)">
+            <img class="tile_img" :src="map_grid[2][4].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[2][4]].src">
+        </div>
+
+        <!-- Column 4 -->
+        <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[3][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 0)">
+            <img class="tile_img" :src="map_grid[3][0].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[3][0]].src">
+        </div>
+        <div class="board-tile board-c2" @mouseover="tile_hover = map_grid[3][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 1)">
+            <img class="tile_img" :src="map_grid[3][1].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[3][1]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[3][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 2)">
+            <img class="tile_img" :src="map_grid[3][2].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[3][2]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[3][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 3)">
+            <img class="tile_img" :src="map_grid[3][3].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[3][3]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[3][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 4)">
+            <img class="tile_img" :src="map_grid[3][4].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[3][4]].src">
+        </div>
+
+        <!-- Column 5 -->
+        <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[4][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 0)">
+            <img class="tile_img" :src="map_grid[4][0].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[4][0]].src">
+        </div>
+        <div class="board-tile board-c2" @mouseover="tile_hover = map_grid[4][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 1)">
+            <img class="tile_img" :src="map_grid[4][1].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[4][1]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[4][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 2)">
+            <img class="tile_img" :src="map_grid[4][2].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[4][2]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[4][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 3)">
+            <img class="tile_img" :src="map_grid[4][3].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[4][3]].src">
+        </div>
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[4][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 4)">
+            <img class="tile_img" :src="map_grid[4][4].tile_type.src">
+            <img class="fig_img" :src="game.figures[fig_board[4][4]].src">
+        </div>
+
+
+
         <div class="hud">
             <h2>HUD</h2>
         <div class="box">
@@ -122,12 +198,14 @@ export default {
     }
     div#board {
         display: grid;
-        grid-template-columns: 10em 10em 10em;
-        grid-template-rows: 10em 10em 10em;
+        grid-template-columns: 10em 10em 10em 10em 10em;
+        grid-template-rows: 10em 10em 10em 10em 10em;
         grid-template-areas:
-            'a1 a2 a3'
-            'b1 b2 b3'
-            'c1 c2 c3'
+            'a1 a2 a3 a4 a5'
+            'b1 b2 b3 b4 b5'
+            'c1 c2 c3 c4 c5'
+            'd1 d2 d3 d4 d5'
+            'e1 e2 e3 e4 e5'
             
         ;
         grid-gap: 10px;
