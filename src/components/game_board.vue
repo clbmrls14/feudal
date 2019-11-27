@@ -3,40 +3,40 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
-        <div class="board-tile board-a2" @mouseover="tile_hover = tile_board[0][0].title" @mouseleave="tile_hover = false" @click="move(0, 0)">
-            <img class="tile_img" :src="tile_board[0][0].src">
+        <div class="board-tile board-a2" @mouseover="tile_hover = map_grid[0][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 0)">
+            <img class="tile_img" :src="map_grid[0][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][0]].src" @mouseover="fig_hover = game.figures[fig_board[0][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-a3" @mouseover="tile_hover = tile_board[0][1].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[0][1].src">
+        <div class="board-tile board-a3" @mouseover="tile_hover = map_grid[0][1].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[0][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][1]].src" @mouseover="fig_hover =game.figures[fig_board[0][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-a1" @mouseover="tile_hover = tile_board[0][2].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[0][2].src">
+        <div class="board-tile board-a1" @mouseover="tile_hover = map_grid[0][2].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[0][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][2]].src" @mouseover="fig_hover = game.figures[fig_board[0][2]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b1" @mouseover="tile_hover = tile_board[1][0].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[1][0].src">
+        <div class="board-tile board-b1" @mouseover="tile_hover = map_grid[1][0].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[1][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][0]].srcc" @mouseover="fig_hover = game.figures[fig_board[1][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b2" @mouseover="tile_hover = tile_board[1][1].title" @mouseleave="tile_hover = false">
-            <img  class="tile_img" :src="tile_board[1][1].src">
+        <div class="board-tile board-b2" @mouseover="tile_hover = map_grid[1][1].tile_type.title" @mouseleave="tile_hover = false">
+            <img  class="tile_img" :src="map_grid[1][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][1]].src" @mouseover="fig_hover = game.figures[fig_board[1][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b3" @mouseover="tile_hover = tile_board[1][2].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[1][2].src">
+        <div class="board-tile board-b3" @mouseover="tile_hover = map_grid[1][2].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[1][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][2]].src" @mouseover="fig_hover = game.figures[fig_board[1][2]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c1" @mouseover="tile_hover = tile_board[2][0].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[2][0].src">
+        <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[2][0].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[2][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][0]].src" @mouseover="fig_hover = game.figures[fig_board[2][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c2" @mouseover="tile_hover = tile_board[2][1].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[2][1].src">
+        <div class="board-tile board-c2" @mouseover="tile_hover = map_grid[2][1].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[2][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][1]].src" @mouseover="fig_hover = game.figures[fig_board[2][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c3" @mouseover="tile_hover = tile_board[2][2].title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="tile_board[2][2].src">
+        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[2][2].tile_type.title" @mouseleave="tile_hover = false">
+            <img class="tile_img" :src="map_grid[2][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][2]].src" @mouseover="fig_hover = game.figures[fig_board[2][2]].title" @mouseleave="fig_hover = false">
         </div>
     </div>
@@ -47,13 +47,14 @@
 
 <script>
 import game from '../data/tile';
-import tile_board from '../data/tile_board';
+import map_grid from '../data/game_map';
 import fig_board from '../data/figure_board';
+
 export default {
     name: 'game_board',
     data () {
             return {
-                tile_board,
+                map_grid,
                 fig_board,
                 game,
                 tile_hover: false,
@@ -81,9 +82,9 @@ export default {
         say: function (message) {
             alert(message)
     },
-        getTileName: function (tile_name) {
-            return tile.title
-        },
+        // getTileName: function (tile_name) {
+        //     return tile.title
+        // },
         // selectTileIndex() {
         //     return 0;
         // },
