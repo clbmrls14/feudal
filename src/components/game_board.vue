@@ -57,7 +57,6 @@ export default {
                 fig_board,
                 game,
                 tile_hover: false
-                //fig_hover: false
             }
         },
     methods: {
