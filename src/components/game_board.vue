@@ -90,7 +90,7 @@ export default {
         // },
         move (x, y) {
              //alert("this is the x and y coordinates " + x + " "+ y)
-             if (tile_board[x][y].passable === true) {
+             if (map_grid[x][y].tile_type.passable === true) {
                  for (var i = 0; i < fig_board.length; i++){
                      for (var j = 0; j < fig_board.length; j++){
                          if (fig_board[i][j] === 1){
