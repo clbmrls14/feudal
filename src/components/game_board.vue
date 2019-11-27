@@ -52,79 +52,53 @@ import fig_board from '../data/figure_board';
 
 export default {
     name: 'game_board',
-    data () {
+        data () {
             return {
                 map_grid,
                 fig_board,
                 game,
                 tile_hover: false,
-                fig_hover: false,
-                //figId: 8,
-                // tileX: 1,
-                // tileY: 1,
-                //figType: 0
+                fig_hover: false
             }
         },
-    // computed: {
-    //     selectedTile (tileX, tileY) {
-    //         return {
-    //             tile: tile_board[this.tileX][this.tileY]
-    //         }
-    //     },
-    //     selectedFigure (figType) {
-    //         return {
-    //             royalty: figures.royaltys[this.figType],
-    //             solider: figures.soldiers[this.figType]
-    //         }
-    //     }
-    // },
     methods: {
         say: function (message) {
             alert(message)
-    },
-        // getTileName: function (tile_name) {
-        //     return tile.title
-        // },
-        // selectTileIndex() {
-        //     return 0;
-        // },
+        },
         move (x, y) {
              //alert("this is the x and y coordinates " + x + " "+ y)
-             if (map_grid[x][y].tile_type.passable === true) {
-                 for (var i = 0; i < fig_board.length; i++){
-                     for (var j = 0; j < fig_board.length; j++){
-                         if (fig_board[i][j] === 1){
-                             fig_board[i][j] = 0
-                         }
-                     }
-                 }
-                 alert("This area is passable at: " + x + " "+ y)
-                 fig_board[x][y] = 1
-                 
-             } else {
-                 alert("This area is impassable")
-             }
-            /*for (var i = 0; i < fig_board.length; i++){
-                     for (var j = 0; j < fig_board.length; j++){
-                         if (fig_board[i][j] === 1){
-                             if ((fig_board[i+1][j] == fig_board[x][y]) || (fig_board[i-1][j] == fig_board[x][y]) ||
-                             (fig_board[i][j+1] == fig_board[x][y]) || (fig_board[i][j-1] == fig_board[x][y])){
-                                 alert("You moved to: " + x + " "+ y )
-                                 fig_board[x][y] = 1
-                             }else {
-                                 
-                             }
-                             
-                         }
-                     }
-                 }*/
-             
-        }
-    }
+            if (map_grid[x][y].tile_type.passable === true) {
+                for (var i = 0; i < fig_board.length; i++) {
+                    for (var j = 0; j < fig_board.length; j++) {
+                        if (fig_board[i][j] === 1) {
+                            var currentx = i
+                            var currenty = j
+                        }
+                    }
+                }
+                var viablex1 = currentx + 1
+                var viablex2 = currentx - 1
+                var viabley1 = currenty + 1
+                var viabley2 = currenty - 1
 
+                if (((x === viablex1) && (y === currenty)) || ((x === viablex2) && (y === currenty))) {
+                    alert("This area is passable at: " + x + " " + y)
+                    fig_board[x][y] = 1
+                    fig_board[currentx][currenty] = 0
+                } else {
+                    if (((x === currentx) && (y === viabley1)) || ((x === currentx) && (y === viabley2))) {
+                        alert("This area is passable at: " + x + " " + y)
+                        fig_board[x][y] = 1
+                        fig_board[currentx][currenty] = 0
+                    }
+                }
+            } else {
+                alert("This area is impassable")
+            }
+            
+        },
+    } 
 }       
-    
-    
 </script>
 
 <style scoped>
