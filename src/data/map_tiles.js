@@ -4,7 +4,7 @@ var areas = {
     a1:
         {
             name: "a1",
-            tile_type: tiles.tile[5],
+            tile_type: tiles.tile[2],
             eventCompleted: true
             
         },
@@ -17,7 +17,7 @@ var areas = {
     a3:
         {
             name: "a3",
-            tile_type: tiles.tile[1],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     a4:
@@ -30,7 +30,7 @@ var areas = {
     a5:
         {
             name: "a5",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[2],
             eventCompleted: true
             
         },
@@ -49,13 +49,13 @@ var areas = {
     b3:
         {
             name: "b3",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[2],
             eventCompleted: true
         },
     b4:
         {
             name: "b4",
-            tile_type: tiles.tile[2],
+            tile_type: tiles.tile[1],
             eventCompleted: true
         },
     b5:
@@ -67,19 +67,19 @@ var areas = {
     c1:
         {
             name: "c1",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[1],
             eventCompleted: true
         },
     c2:
         {
             name: "c2",
-            tile_type: tiles.tile[1],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     c3:
         {
             name: "c3",
-            tile_type: tiles.tile[3],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     c4:
@@ -91,7 +91,7 @@ var areas = {
     c5:
         {
             name: "c5",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[1],
             eventCompleted: true
         },
      d1:
@@ -103,19 +103,19 @@ var areas = {
     d2:
         {
             name: "d2",
-            tile_type: tiles.tile[2],
+            tile_type: tiles.tile[5],
             eventCompleted: true
         },
     d3:
         {
             name: "d3",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[3],
             eventCompleted: true
         },
     d4:
         {
             name: "d4",
-            tile_type: tiles.tile[2],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     d5:
@@ -127,7 +127,7 @@ var areas = {
     e1:
         {
             name: "e1",
-            tile_type: tiles.tile[5],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     e2:
@@ -139,7 +139,7 @@ var areas = {
     e3:
         {
             name: "e3",
-            tile_type: tiles.tile[3],
+            tile_type: tiles.tile[0],
             eventCompleted: true
         },
     e4:
@@ -151,7 +151,7 @@ var areas = {
     e5:
         {
             name: "e5",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[5],
             eventCompleted: true
         }
 };
