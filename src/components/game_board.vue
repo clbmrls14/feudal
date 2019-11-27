@@ -47,6 +47,9 @@
         </div> 
         <div class="box">
             <p>this is the player hud</p>
+            <p> {{ player.name }} </p>
+            <p>Health: {{ player.health }} </p>
+            <p>Wealth: {{ player.money }} gold</p>
         </div> 
     </div>
     </div>
@@ -59,6 +62,7 @@
 import game from '../data/tile';
 import map_grid from '../data/game_map';
 import fig_board from '../data/figure_board';
+import player from '../data/player';
 
 export default {
     name: 'game_board',
@@ -67,7 +71,8 @@ export default {
                 map_grid,
                 fig_board,
                 game,
-                tile_hover: false
+                tile_hover: false,
+                player
                 //fig_hover: false
             }
         },
@@ -150,12 +155,13 @@ export default {
     }
 
     .hud{
+        font-family: 'Cinzel Decorative', cursive;
         right: 0;
         padding-right: 5em;
         position: fixed;
         display: grid;
         grid-template-columns: 10em;
-        grid-template-rows: 2em 15em 8em;
+        grid-template-rows: 2em 15em 15em;
         grid-template-areas:
             'a'
             'b'
@@ -166,6 +172,8 @@ export default {
         justify-content: center;
     }
     .box{
+        font-family: 'Cinzel Decorative', cursive;
+        font-weight: bold;
         border: 2px solid black;
         margin-top: 1em;
         
