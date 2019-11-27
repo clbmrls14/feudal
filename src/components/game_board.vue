@@ -5,43 +5,42 @@
     <div id="board">
         <div class="board-tile board-a2" @mouseover="tile_hover = map_grid[0][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 0)">
             <img class="tile_img" :src="map_grid[0][0].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[0][0]].src" @mouseover="fig_hover = game.figures[fig_board[0][0]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][0]].src">
         </div>
         <div class="board-tile board-a3" @mouseover="tile_hover = map_grid[0][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 1)">
             <img class="tile_img" :src="map_grid[0][1].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[0][1]].src" @mouseover="fig_hover =game.figures[fig_board[0][1]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][1]].src">
         </div>
         <div class="board-tile board-a1" @mouseover="tile_hover = map_grid[0][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 2)">
             <img class="tile_img" :src="map_grid[0][2].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[0][2]].src" @mouseover="fig_hover = game.figures[fig_board[0][2]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[0][2]].src">
         </div>
         <div class="board-tile board-b1" @mouseover="tile_hover = map_grid[1][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 0)">
             <img class="tile_img" :src="map_grid[1][0].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[1][0]].src" @mouseover="fig_hover = game.figures[fig_board[1][0]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[1][0]].src">
         </div>
         <div class="board-tile board-b2" @mouseover="tile_hover = map_grid[1][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 1)">
             <img  class="tile_img" :src="map_grid[1][1].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[1][1]].src" @mouseover="fig_hover = game.figures[fig_board[1][1]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[1][1]].src">
         </div>
         <div class="board-tile board-b3" @mouseover="tile_hover = map_grid[1][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 2)">
             <img class="tile_img" :src="map_grid[1][2].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[1][2]].src" @mouseover="fig_hover = game.figures[fig_board[1][2]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[1][2]].src">
         </div>
         <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[2][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 0)">
             <img class="tile_img" :src="map_grid[2][0].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[2][0]].src" @mouseover="fig_hover = game.figures[fig_board[2][0]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][0]].src">
         </div>
         <div class="board-tile board-c2" @mouseover="tile_hover = map_grid[2][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 1)">
             <img class="tile_img" :src="map_grid[2][1].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[2][1]].src" @mouseover="fig_hover = game.figures[fig_board[2][1]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][1]].src">
         </div>
         <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[2][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 2)">
             <img class="tile_img" :src="map_grid[2][2].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[2][2]].src" @mouseover="fig_hover = game.figures[fig_board[2][2]].title" @mouseleave="fig_hover = false">
+            <img class="fig_img" :src="game.figures[fig_board[2][2]].src">
         </div>
     </div>
     <span v-if="tile_hover">{{ tile_hover }}</span>
-    <span v-if="fig_hover">{{ fig_hover }}</span>
 </main>
 </template>
 
@@ -57,8 +56,8 @@ export default {
                 map_grid,
                 fig_board,
                 game,
-                tile_hover: false,
-                fig_hover: false
+                tile_hover: false
+                //fig_hover: false
             }
         },
     methods: {
@@ -66,7 +65,6 @@ export default {
             alert(message)
         },
         move (x, y) {
-             //alert("this is the x and y coordinates " + x + " "+ y)
             if (map_grid[x][y].tile_type.passable === true) {
                 for (var i = 0; i < fig_board.length; i++) {
                     for (var j = 0; j < fig_board.length; j++) {
@@ -82,18 +80,18 @@ export default {
                 var viabley2 = currenty - 1
 
                 if (((x === viablex1) && (y === currenty)) || ((x === viablex2) && (y === currenty))) {
-                    alert("This area is passable at: " + x + " " + y)
+                    //alert("This area is passable at: " + x + " " + y)
                     fig_board[x][y] = 1
                     fig_board[currentx][currenty] = 0
                 } else {
                     if (((x === currentx) && (y === viabley1)) || ((x === currentx) && (y === viabley2))) {
-                        alert("This area is passable at: " + x + " " + y)
+                        //alert("This area is passable at: " + x + " " + y)
                         fig_board[x][y] = 1
                         fig_board[currentx][currenty] = 0
                     }
                 }
             } else {
-                alert("This area is impassable")
+                //alert("This area is impassable")
             }
             
         },
