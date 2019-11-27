@@ -4,7 +4,7 @@ var areas = {
     a1:
         {
             name: "a1",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[5],
             eventCompleted: true
             
         },
@@ -19,6 +19,20 @@ var areas = {
             name: "a3",
             tile_type: tiles.tile[1],
             eventCompleted: true
+        },
+    a4:
+        {
+            name: "a4",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+            
+        },
+    a5:
+        {
+            name: "a5",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+            
         },
     b1:
         {
@@ -38,6 +52,18 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: true
         },
+    b4:
+        {
+            name: "b4",
+            tile_type: tiles.tile[2],
+            eventCompleted: true
+        },
+    b5:
+        {
+            name: "b5",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
     c1:
         {
             name: "c1",
@@ -54,6 +80,78 @@ var areas = {
         {
             name: "c3",
             tile_type: tiles.tile[3],
+            eventCompleted: true
+        },
+    c4:
+        {
+            name: "c4",
+            tile_type: tiles.tile[1],
+            eventCompleted: true
+        },
+    c5:
+        {
+            name: "c5",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
+     d1:
+        {
+            name: "d1",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
+    d2:
+        {
+            name: "d2",
+            tile_type: tiles.tile[2],
+            eventCompleted: true
+        },
+    d3:
+        {
+            name: "d3",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
+    d4:
+        {
+            name: "d4",
+            tile_type: tiles.tile[2],
+            eventCompleted: true
+        },
+    d5:
+        {
+            name: "d5",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
+    e1:
+        {
+            name: "e1",
+            tile_type: tiles.tile[5],
+            eventCompleted: true
+        },
+    e2:
+        {
+            name: "e2",
+            tile_type: tiles.tile[1],
+            eventCompleted: true
+        },
+    e3:
+        {
+            name: "e3",
+            tile_type: tiles.tile[3],
+            eventCompleted: true
+        },
+    e4:
+        {
+            name: "e4",
+            tile_type: tiles.tile[0],
+            eventCompleted: true
+        },
+    e5:
+        {
+            name: "e5",
+            tile_type: tiles.tile[0],
             eventCompleted: true
         }
 };
