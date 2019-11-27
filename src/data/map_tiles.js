@@ -4,7 +4,7 @@ var areas = {
     a1:
         {
             name: "a1",
-            tile_type: tiles.tile[0]
+            tile_type: tiles.tile[5]
         },
     a2: 
         {
