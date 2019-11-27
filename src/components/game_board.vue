@@ -39,8 +39,19 @@
             <img class="tile_img" :src="map_grid[2][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][2]].src">
         </div>
+        <div class="hud">
+            <h2>HUD</h2>
+        <div class="box">
+            <p>this is the map hud</p>
+            <span v-if="tile_hover">{{ tile_hover }}</span>
+        </div> 
+        <div class="box">
+            <p>this is the player hud</p>
+        </div> 
     </div>
-    <span v-if="tile_hover">{{ tile_hover }}</span>
+    </div>
+    
+    
 </main>
 </template>
 
@@ -57,6 +68,7 @@ export default {
                 fig_board,
                 game,
                 tile_hover: false
+                //fig_hover: false
             }
         },
     methods: {
@@ -111,6 +123,7 @@ export default {
             'a1 a2 a3'
             'b1 b2 b3'
             'c1 c2 c3'
+            
         ;
         grid-gap: 10px;
         justify-content: center;
@@ -130,11 +143,31 @@ export default {
     }
     span {
         font-family: 'Cinzel Decorative', cursive;
-        font-size: 200%;
-        padding: 1em;
-        border: 2px solid black;
+        font-size: 125%;
         position: relative;
-        top: 4em;
+        top: 6.5em;
         justify-content: left;
+    }
+
+    .hud{
+        right: 0;
+        padding-right: 5em;
+        position: fixed;
+        display: grid;
+        grid-template-columns: 10em;
+        grid-template-rows: 2em 15em 8em;
+        grid-template-areas:
+            'a'
+            'b'
+            'c'
+            
+        ;
+        
+        justify-content: center;
+    }
+    .box{
+        border: 2px solid black;
+        margin-top: 1em;
+        
     }
 </style>
