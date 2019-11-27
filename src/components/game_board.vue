@@ -7,36 +7,36 @@
             <img class="tile_img" :src="map_grid[0][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][0]].src" @mouseover="fig_hover = game.figures[fig_board[0][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-a3" @mouseover="tile_hover = map_grid[0][1].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[0][1].tile_type.src">
+        <div class="board-tile board-a3" @mouseover="tile_hover = tile_board[0][1].title" @mouseleave="tile_hover = false" @click="move(0, 1)">
+            <img class="tile_img" :src="tile_board[0][1].src">
             <img class="fig_img" :src="game.figures[fig_board[0][1]].src" @mouseover="fig_hover =game.figures[fig_board[0][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-a1" @mouseover="tile_hover = map_grid[0][2].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[0][2].tile_type.src">
+        <div class="board-tile board-a1" @mouseover="tile_hover = tile_board[0][2].title" @mouseleave="tile_hover = false" @click="move(0, 2)">
+            <img class="tile_img" :src="tile_board[0][2].src">
             <img class="fig_img" :src="game.figures[fig_board[0][2]].src" @mouseover="fig_hover = game.figures[fig_board[0][2]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b1" @mouseover="tile_hover = map_grid[1][0].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[1][0].tile_type.src">
-            <img class="fig_img" :src="game.figures[fig_board[1][0]].srcc" @mouseover="fig_hover = game.figures[fig_board[1][0]].title" @mouseleave="fig_hover = false">
+        <div class="board-tile board-b1" @mouseover="tile_hover = tile_board[1][0].title" @mouseleave="tile_hover = false" @click="move(1, 0)">
+            <img class="tile_img" :src="tile_board[1][0].src">
+            <img class="fig_img" :src="game.figures[fig_board[1][0]].src" @mouseover="fig_hover = game.figures[fig_board[1][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b2" @mouseover="tile_hover = map_grid[1][1].tile_type.title" @mouseleave="tile_hover = false">
-            <img  class="tile_img" :src="map_grid[1][1].tile_type.src">
+        <div class="board-tile board-b2" @mouseover="tile_hover = tile_board[1][1].title" @mouseleave="tile_hover = false" @click="move(1, 1)">
+            <img  class="tile_img" :src="tile_board[1][1].src">
             <img class="fig_img" :src="game.figures[fig_board[1][1]].src" @mouseover="fig_hover = game.figures[fig_board[1][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-b3" @mouseover="tile_hover = map_grid[1][2].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[1][2].tile_type.src">
+        <div class="board-tile board-b3" @mouseover="tile_hover = tile_board[1][2].title" @mouseleave="tile_hover = false" @click="move(1, 2)">
+            <img class="tile_img" :src="tile_board[1][2].src">
             <img class="fig_img" :src="game.figures[fig_board[1][2]].src" @mouseover="fig_hover = game.figures[fig_board[1][2]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c1" @mouseover="tile_hover = map_grid[2][0].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[2][0].tile_type.src">
+        <div class="board-tile board-c1" @mouseover="tile_hover = tile_board[2][0].title" @mouseleave="tile_hover = false" @click="move(2, 0)">
+            <img class="tile_img" :src="tile_board[2][0].src">
             <img class="fig_img" :src="game.figures[fig_board[2][0]].src" @mouseover="fig_hover = game.figures[fig_board[2][0]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c2" @mouseover="tile_hover = map_grid[2][1].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[2][1].tile_type.src">
+        <div class="board-tile board-c2" @mouseover="tile_hover = tile_board[2][1].title" @mouseleave="tile_hover = false" @click="move(2, 1)">
+            <img class="tile_img" :src="tile_board[2][1].src">
             <img class="fig_img" :src="game.figures[fig_board[2][1]].src" @mouseover="fig_hover = game.figures[fig_board[2][1]].title" @mouseleave="fig_hover = false">
         </div>
-        <div class="board-tile board-c3" @mouseover="tile_hover = map_grid[2][2].tile_type.title" @mouseleave="tile_hover = false">
-            <img class="tile_img" :src="map_grid[2][2].tile_type.src">
+        <div class="board-tile board-c3" @mouseover="tile_hover = tile_board[2][2].title" @mouseleave="tile_hover = false" @click="move(2, 2)">
+            <img class="tile_img" :src="tile_board[2][2].src">
             <img class="fig_img" :src="game.figures[fig_board[2][2]].src" @mouseover="fig_hover = game.figures[fig_board[2][2]].title" @mouseleave="fig_hover = false">
         </div>
     </div>
@@ -89,9 +89,23 @@ export default {
         //     return 0;
         // },
         move (x, y) {
-             alert("this is the x and y coordinates " + x + " "+ y)
+             //alert("this is the x and y coordinates " + x + " "+ y)
+             if (tile_board[x][y].passable === true) {
+                 for (var i = 0; i < fig_board.length; i++){
+                     for (var j = 0; j < fig_board.length; j++){
+                         if (fig_board[i][j] === 1){
+                             fig_board[i][j] = 0
+                         }
+                     }
+                 }
+                 alert("This area is passable at: " + x + " "+ y)
+                 fig_board[x][y] = 1
+                 
+             } else {
+                 alert("This area is impassable")
+             }
+
              
-             fig_board[x][y] = 1
         }
     }
 
