@@ -24,7 +24,7 @@ const game = {
             description: 'You may not move through the mountain.',
             title: 'Mountain',
             src: images('./tile_mountain.png'),
-            passable: true,
+            passable: false,
             swamp: false
         },
         {
