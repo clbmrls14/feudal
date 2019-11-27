@@ -150,7 +150,7 @@ export default {
         font-family: 'Cinzel Decorative', cursive;
         font-size: 125%;
         position: relative;
-        top: 6.5em;
+        top: 6em;
         justify-content: left;
     }
 
