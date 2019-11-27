@@ -103,7 +103,20 @@ export default {
              } else {
                  alert("This area is impassable")
              }
-
+            /*for (var i = 0; i < fig_board.length; i++){
+                     for (var j = 0; j < fig_board.length; j++){
+                         if (fig_board[i][j] === 1){
+                             if ((fig_board[i+1][j] == fig_board[x][y]) || (fig_board[i-1][j] == fig_board[x][y]) ||
+                             (fig_board[i][j+1] == fig_board[x][y]) || (fig_board[i][j-1] == fig_board[x][y])){
+                                 alert("You moved to: " + x + " "+ y )
+                                 fig_board[x][y] = 1
+                             }else {
+                                 
+                             }
+                             
+                         }
+                     }
+                 }*/
              
         }
     }
