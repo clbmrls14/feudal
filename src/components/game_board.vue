@@ -90,8 +90,16 @@ export default {
         move (x, y) {
              //alert("this is the x and y coordinates " + x + " "+ y)
              if (tile_board[x][y].passable === true) {
+                 for (var i = 0; i < fig_board.length; i++){
+                     for (var j = 0; j < fig_board.length; j++){
+                         if (fig_board[i][j] === 1){
+                             fig_board[i][j] = 0
+                         }
+                     }
+                 }
                  alert("This area is passable at: " + x + " "+ y)
                  fig_board[x][y] = 1
+                 
              } else {
                  alert("This area is impassable")
              }
