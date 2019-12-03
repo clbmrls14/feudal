@@ -116,18 +116,18 @@
 
 
         <div class="hud">
-            <h2>HUD</h2>
-        <div class="box">
-            <p>this is the map hud</p>
-            <span v-if="tile_hover">{{ tile_hover }}</span>
-        </div> 
-        <div class="box">
-            <p>this is the player hud</p>
-            <p> {{ player.name }} </p>
-            <p>Health: {{ player.health }} </p>
-            <p>Wealth: {{ player.money }} gold</p>
-        </div> 
-    </div>
+                <h2>HUD</h2>
+            <div class="box">
+                <p>this is the map hud</p>
+                <span v-if="tile_hover">{{ tile_hover }}</span>
+            </div> 
+            <div class="box">
+                <p>this is the player hud</p>
+                <p> {{ player.name }} </p>
+                <p>Health: {{ player.health }} </p>
+                <p>Wealth: {{ player.money }} gold</p>
+            </div> 
+        </div>
     </div>
     
     
@@ -235,7 +235,7 @@ export default {
     .hud{
         font-family: 'Cinzel Decorative', cursive;
         right: 0;
-        padding-right: 5em;
+        padding-right: 2.5em;
         position: fixed;
         display: grid;
         grid-template-columns: 10em;
