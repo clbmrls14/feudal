@@ -122,7 +122,7 @@
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="box">
-            <p>this is the player hud</p>
+            <p class="eventInfo"></p>
             <p> {{ player.name }} </p>
             <p>Health: {{ player.health }} </p>
             <p>Wealth: {{ player.money }} gold</p>
@@ -175,11 +175,13 @@ export default {
                     //alert("This area is passable at: " + x + " " + y)
                     fig_board[x][y] = 1
                     fig_board[currentx][currenty] = 0
+                    checkEvent(x,y)
                 } else {
                     if (((x === currentx) && (y === viabley1)) || ((x === currentx) && (y === viabley2))) {
                         //alert("This area is passable at: " + x + " " + y)
                         fig_board[x][y] = 1
                         fig_board[currentx][currenty] = 0
+                        checkEvent(x,y)
                     }
                 }
             } else {
@@ -187,6 +189,11 @@ export default {
             }
             
         },
+        checkEvent (x, y) {
+            if (!map_grid[x][y].eventCompleted) {
+               map_grid[x][y].event
+            }
+        }
     } 
 }       
 </script>
@@ -210,6 +217,8 @@ export default {
         ;
         grid-gap: 10px;
         justify-content: center;
+        width: 60%;
+        position: absolute;
     }
     img {
         height: 100%;
@@ -243,10 +252,9 @@ export default {
         grid-template-areas:
             'a'
             'b'
-            'c'
-            
+            'c'  
         ;
-        
+        width: 40%;
         justify-content: center;
     }
     .box{

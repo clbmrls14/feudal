@@ -128,7 +128,7 @@ var areas = {
         {
             name: "e1",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: events.gameStart()
         },
     e2:
