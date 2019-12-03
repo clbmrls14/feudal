@@ -105,7 +105,7 @@ var areas = {
                     var eventString = 
                     `If you can read this we are wizards.
                     `;
-                    document.getElementsByClassName("eventInfo").innerHTML = eventString;
+                    document.querySelector(".eventInfo").innerHTML = eventString;
                 }
             }
         },
@@ -145,7 +145,7 @@ var areas = {
                         `You have arrived in the far reaches of the kingdom. Now go find the thing you need to find.
                         Be careful of bandits!
                         `;
-                    document.getElementsByClassName("eventInfo").innerHTML = eventString;
+                    document.querySelector(".eventInfo").innerHTML = eventString;
                 }
             }
         },

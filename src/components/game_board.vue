@@ -188,7 +188,9 @@ export default {
             } else {
                 //alert("This area is impassable")
             }
+            this.$forceUpdate();
         },
+        
     } 
 }       
 </script>
