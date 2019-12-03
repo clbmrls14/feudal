@@ -137,6 +137,11 @@ import map_grid from '../data/game_map';
 import fig_board from '../data/figure_board';
 import player from '../data/player';
 
+function eventCheck (x,y) {
+            alert("Event Check Called")
+            map_grid[x][y].event()
+        }
+
 export default {
     name: 'game_board',
         data () {
@@ -146,7 +151,6 @@ export default {
                 game,
                 tile_hover: false,
                 player
-                //fig_hover: false
             }
         },
     methods: {
@@ -169,24 +173,22 @@ export default {
                 var viabley2 = currenty - 1
 
                 if (((x === viablex1) && (y === currenty)) || ((x === viablex2) && (y === currenty))) {
-                    //alert("This area is passable at: " + x + " " + y)
+                    alert("This area is passable at: " + x + " " + y)
                     fig_board[x][y] = 1
                     fig_board[currentx][currenty] = 0
+                    eventCheck(x,y)
                 } else {
                     if (((x === currentx) && (y === viabley1)) || ((x === currentx) && (y === viabley2))) {
-                        //alert("This area is passable at: " + x + " " + y)
+                        alert("This area is passable at: " + x + " " + y)
                         fig_board[x][y] = 1
                         fig_board[currentx][currenty] = 0
+                        eventCheck(x,y)
                     }
                 }
             } else {
                 //alert("This area is impassable")
             }
-            
         },
-        eventCheck (x,y) {
-            map_grid[x][y].event
-        }
     } 
 }       
 </script>
