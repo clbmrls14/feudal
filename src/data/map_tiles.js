@@ -1,4 +1,5 @@
 import tiles from './tile.js';
+import events from './game_events.js';
 
 var areas = {
     a1:
@@ -6,7 +7,6 @@ var areas = {
             name: "a1",
             tile_type: tiles.tile[2],
             eventCompleted: true
-            
         },
     a2: 
         {
@@ -128,7 +128,8 @@ var areas = {
         {
             name: "e1",
             tile_type: tiles.tile[0],
-            eventCompleted: true
+            eventCompleted: true,
+            event: events.gameStart()
         },
     e2:
         {

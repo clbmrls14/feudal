@@ -118,7 +118,7 @@
         <div class="hud">
             <h2>HUD</h2>
         <div class="box">
-            <p>this is the map hud</p>
+            <p class="eventInfo">this is the map hud</p>
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="box">
