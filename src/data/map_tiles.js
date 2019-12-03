@@ -129,7 +129,13 @@ var areas = {
             name: "e1",
             tile_type: tiles.tile[0],
             eventCompleted: false,
-            event: events.gameStart()
+            event: function() {
+                var eventString = 
+                    `You have arrived in the far reaches of the kingdom. Now go find the thing you need to find.
+                    Be careful of bandits!
+                    `;
+        document.getElementsByClassName("eventInfo").innerHTML = eventString;
+            }
         },
     e2:
         {
