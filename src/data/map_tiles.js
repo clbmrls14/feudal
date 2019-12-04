@@ -211,15 +211,17 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
                     <button onclick="tellStory()">Speak to the fisherman</button>
-                    <p id="story"></p>`
-                    function tellStory() {
-                        document.getElementById("story").innerHTML = 
-                        `<p>    "There are no knights here anymore. No shortage of worms though."</p>
-                        <p>He can tell you're confused, so he continues.</p>
-                        <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
-                        <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
-                        `;
-                    }
+                    <p id="story"></p>
+                    <script>
+                        function tellStory() {
+                            document.getElementById("story").innerHTML = 
+                            <p>    "There are no knights here anymore. No shortage of worms though."</p>
+                            <p>He can tell you're confused, so he continues.</p>
+                            <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                            <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
+                            ;
+                    </script>
+                    }`
                 
                     this.eventCompleted= true;
                 }
