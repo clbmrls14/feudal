@@ -100,12 +100,13 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                alert("d1 event triggered!")
+                //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
                     `If you can read this we are wizards.
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
+                    this.eventCompleted= true;
                 }
             }
         },
@@ -139,13 +140,14 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                alert("e1 event triggered!")
+                //alert("e1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
                         `You have arrived in the far reaches of the kingdom. Now go find the thing you need to find.
                         Be careful of bandits!
                         `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
+                    this.eventCompleted= true;
                 }
             }
         },
