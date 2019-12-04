@@ -31,14 +31,19 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>To the east lies an old castle, smoke rising from its courtyard.</p>
+                    <p>You're surrounded by the remains of battle. Arrows stick out of the ground, 
+                    the earth is charred in some places. Worms crawl from every direction towards
+                    the castle, and you feel a terrible sense of dread.</p>`;
+                    this.eventCompleted=true;
                 }
+                else {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>To the east lies an old castle, smoke rising from its courtyard.</p>`;
+                }
+                
             }
         },
     a4:
@@ -47,14 +52,8 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML =
+                    `You're as far north as you can go, and you're starting to feel the cold in your bones.`;
             }
             
         },
