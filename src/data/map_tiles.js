@@ -6,18 +6,7 @@ var areas = {
     a1:
         {
             name: "a1",
-            tile_type: tiles.tile[2],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
+            tile_type: tiles.tile[2]
         },
             
     a2: 
@@ -72,19 +61,7 @@ var areas = {
     a5:
         {
             name: "a5",
-            tile_type: tiles.tile[2],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
-            
+            tile_type: tiles.tile[2]
         },
         // *************
     b1:
@@ -106,34 +83,12 @@ var areas = {
     b2:
         {
             name: "b2",
-            tile_type: tiles.tile[2],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
+            tile_type: tiles.tile[2]
         },
     b3:
         {
             name: "b3",
-            tile_type: tiles.tile[2],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
+            tile_type: tiles.tile[2]
         },
     b4:
         {
@@ -244,14 +199,25 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
+                    // var event = `<p>    "There are no knights here anymore. No shortage of worms though."</p>
+                    // <p>He can tell you're confused, so he continues.</p>
+                    // <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                    // <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
+                    // `;
+
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
-                    <button>Speak to the fisherman</button>
-                    <p>    "There are no knights here anymore. No shortage of worms though."</p>
-                    <p>He can tell you're confused, so he continues.</p>
-                    <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
-                    <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
-                    `;
+                    <button onclick="tellStory()">Speak to the fisherman</button>
+                    <p id="story"></p>`
+                    function tellStory() {
+                        document.getElementById("story").innerHTML = 
+                        `<p>    "There are no knights here anymore. No shortage of worms though."</p>
+                        <p>He can tell you're confused, so he continues.</p>
+                        <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                        <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
+                        `;
+                    }
+                
                     this.eventCompleted= true;
                 }
                 else {
@@ -262,18 +228,7 @@ var areas = {
     d2:
         {
             name: "d2",
-            tile_type: tiles.tile[5],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
+            tile_type: tiles.tile[5]
         },
     d3:
         {
@@ -400,18 +355,7 @@ var areas = {
     e5:
         {
             name: "e5",
-            tile_type: tiles.tile[5],
-            eventCompleted: false,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            }
+            tile_type: tiles.tile[5]
         }
 };
 

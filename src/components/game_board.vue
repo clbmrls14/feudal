@@ -118,6 +118,7 @@
         <div class="map_hud">
             <h2>Map</h2>
             <div class="eventInfo">beep boop</div>
+            <div class="story"></div>
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="player_hud">
