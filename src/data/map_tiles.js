@@ -12,7 +12,7 @@ var areas = {
     a2: 
         {
             name: "a2",
-            tile_type: tiles.tile[0],
+            tile_type: tiles.tile[4],
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
@@ -259,14 +259,8 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML =
+                `The village lies to the west. There are a lot of broken down and abandoned wagons here.`;
             }
         },
     d5:
@@ -275,14 +269,8 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML =
+                `You've reached the edge of the kingdom, you don't dare go further`;
             }
         },
         // *************
@@ -323,14 +311,8 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML =
+                `The path here leads to the village north, but it doesn't seem like it's been traveled for some time.`;
             }
         },
     e4:

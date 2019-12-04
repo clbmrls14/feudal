@@ -39,7 +39,7 @@ const game = {
             id: 4,
             description: 'Archers and squires may not enter the castle. When an enemy enters your castle, you lose.',
             title: 'Castle',
-            src: images('./tile_village.png'),
+            src: images('./tile_castle.png'),
             passable: true,
             swamp: false
         },
