@@ -81,7 +81,7 @@ var areas = {
                     `You've defeated the groundskeeper you enter your password and get the sacred crown
                     but it is missing the center jewel...
                     `;
-                    player.items.push('crown');
+                    player.items.push('broken crown');
                     document.querySelector(".eventInfo").innerHTML = doneString;
                 }
             }
@@ -103,7 +103,7 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if ( player.items.includes("crown")) {
+                if ( player.items.includes("broken crown")) {
                     var eventString = 
                     `A shaman appears and offers the missing jewel to the crown: 
                     `;
@@ -176,7 +176,7 @@ var areas = {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `You've stumbled upon a camp full of bandits!
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
@@ -322,7 +322,7 @@ var areas = {
             event: function() {
                 if (!this.eventCompleted) {
                     var eventString = 
-                    `As you are traveling you run into a weeping woman over a body on the side of the road.
+                    `As you are traveling you run into a woman, weeping over a body on the side of the road.
                     She tells you that her husband was killed and her son was taken by bandits. She pleads
                     with you to help her...
                     `;
