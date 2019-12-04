@@ -5,7 +5,7 @@ var areas = {
         {
             name: "a1",
             tile_type: tiles.tile[2],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -22,7 +22,7 @@ var areas = {
         {
             name: "a2",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -38,7 +38,7 @@ var areas = {
         {
             name: "a3",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -54,7 +54,7 @@ var areas = {
         {
             name: "a4",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -71,7 +71,7 @@ var areas = {
         {
             name: "a5",
             tile_type: tiles.tile[2],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -88,7 +88,7 @@ var areas = {
         {
             name: "b1",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -104,13 +104,23 @@ var areas = {
         {
             name: "b2",
             tile_type: tiles.tile[2],
-            eventCompleted: true
+            eventCompleted: false,
+            event: function() {
+                //alert("d1 event triggered!")
+                if (!this.eventCompleted) {
+                    var eventString = 
+                    `If you can read this we are wizards.
+                    `;
+                    document.querySelector(".eventInfo").innerHTML = eventString;
+                    this.eventCompleted= true;
+                }
+            }
         },
     b3:
         {
             name: "b3",
             tile_type: tiles.tile[2],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -126,7 +136,7 @@ var areas = {
         {
             name: "b4",
             tile_type: tiles.tile[1],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -142,7 +152,7 @@ var areas = {
         {
             name: "b5",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -158,17 +168,7 @@ var areas = {
         {
             name: "c1",
             tile_type: tiles.tile[1],
-            eventCompleted: true,
-            event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
-            },
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -184,7 +184,7 @@ var areas = {
         {
             name: "c2",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -200,7 +200,7 @@ var areas = {
         {
             name: "c3",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -216,7 +216,7 @@ var areas = {
         {
             name: "c4",
             tile_type: tiles.tile[1],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -232,7 +232,7 @@ var areas = {
         {
             name: "c5",
             tile_type: tiles.tile[1],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -264,7 +264,7 @@ var areas = {
         {
             name: "d2",
             tile_type: tiles.tile[5],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -280,7 +280,7 @@ var areas = {
         {
             name: "d3",
             tile_type: tiles.tile[3],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -296,7 +296,7 @@ var areas = {
         {
             name: "d4",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -312,7 +312,7 @@ var areas = {
         {
             name: "d5",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -341,7 +341,7 @@ var areas = {
         {
             name: "e2",
             tile_type: tiles.tile[1],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -357,7 +357,7 @@ var areas = {
         {
             name: "e3",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
@@ -373,12 +373,13 @@ var areas = {
         {
             name: "e4",
             tile_type: tiles.tile[0],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `As you are traveling you run into a weeping woman over a body on the side of the road.
+                    She tells you that her husband was killed and her son was taken by bandits. She pleads
+                    with you to help her...
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
@@ -389,7 +390,7 @@ var areas = {
         {
             name: "e5",
             tile_type: tiles.tile[5],
-            eventCompleted: true,
+            eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
