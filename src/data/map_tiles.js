@@ -206,34 +206,22 @@ var areas = {
             name: "d1",
             tile_type: tiles.tile[0],
             eventCompleted: false,
-            something: function() {
-                window.alert('blah');
-            },
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    // var event = `<p>    "There are no knights here anymore. No shortage of worms though."</p>
-                    // <p>He can tell you're confused, so he continues.</p>
-                    // <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
-                    // <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
-                    // `;
-
+                    window.tellStory = function() {
+                        document.getElementById("story").innerHTML = `
+                        <p>    "There are no knights here anymore. No shortage of worms though."</p>
+                        <p>He can tell you're confused, so he continues.</p>
+                        <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                        <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> `
+                        ;
+                        map[3][0].eventCompleted = true;
+                    };
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
-                    <button @click="something()">Speak to the fisherman</button>
-                    <p id="story"></p>
-                    <script>
-                        function tellStory() {
-                            document.getElementById("story").innerHTML = 
-                            <p>    "There are no knights here anymore. No shortage of worms though."</p>
-                            <p>He can tell you're confused, so he continues.</p>
-                            <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
-                            <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
-                            ;
-                        }
-                    </script>`
-                
-                    this.eventCompleted= true;
+                    <button onclick="window.tellStory()">Speak to the fisherman</button>
+                    <div id="story"></div>`
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = "You think you can still hear the fisherman muttering to himself."
