@@ -142,12 +142,15 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
+                if (!this.eventCompleted && player.items.includes("crown")) {
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `A shaman appears and offers the missing jewel to the crown: 
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                } else {
+                    document.querySelector(".eventInfo").innerHTML = `This place gives you a eery 
+                    feeling like you are being watched.`;
                 }
             }
         },
@@ -283,9 +286,13 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
+                    if(player.items.includes("key")){
+                        player.items.push('password');
+                    }
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `You've entered the town do you wish to purchase a weapon?
                     `;
+                    
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
                 }
@@ -350,7 +357,7 @@ var areas = {
                         <p>Will you fight the rat or escape?</p>
                         <button id="option1">Fight</button>
                         <button id = "option2">Flee</button>`
-                    document.querySelector(".eventInfo").innerHTML = eventString;
+                    //document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
                 }
             }
