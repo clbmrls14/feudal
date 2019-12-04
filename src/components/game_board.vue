@@ -117,7 +117,7 @@
 
         <div class="map_hud">
             <h2>Map</h2>
-            <p class="eventInfo">beep boop</p>
+            <div class="eventInfo">beep boop</div>
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="player_hud">
@@ -238,14 +238,16 @@ export default {
         justify-content: left;
     }
 
-    .map_hud{
+    .map_hud {
+        background-color: whitesmoke;
         font-family: 'Cinzel Decorative', cursive;
         font-weight: bold;
         border: 2px solid black;
         margin-top: 1em;
         grid-area: mh;
     }
-    .player_hud{
+    .player_hud {
+        background-color: whitesmoke;
         font-family: 'Cinzel Decorative', cursive;
         font-weight: bold;
         border: 2px solid black;
@@ -255,6 +257,16 @@ export default {
 
     .eventInfo {
         font-family: 'Raleway', sans-serif;
+        padding: 0.5em;
+        text-align: left;
+    }
+
+    button {
+        border: none;
+        color: slateblue;
+        padding: 1em;
+        text-align: center;
+        font-size: larger;
     }
 
     .a1 { grid-area: a1; }
