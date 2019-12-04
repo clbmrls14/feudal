@@ -84,6 +84,7 @@ var areas = {
             }
             
         },
+        // *************
     b1:
         {
             name: "b1",
@@ -164,6 +165,7 @@ var areas = {
                 }
             }
         },
+        // *************
     c1:
         {
             name: "c1",
@@ -171,13 +173,8 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML = 
+                `You're in a dank swamp. It reeks of death, and to the north you see what looks like a graveyard.`;
             }
         },
     c2:
@@ -187,13 +184,9 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML = 
+                `To the north you see mountains, to the south a lake. This idyllic valley seems welcoming, but 
+                seems completely void of animal life.`;
             }
         },
     c3:
@@ -203,13 +196,9 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML = 
+                `You can tell you're not the only one to travel this path. To south you see a small village.
+                It looks far more appealing than the swamps to the east or mountains to the north.`;
             }
         },
     c4:
@@ -244,6 +233,7 @@ var areas = {
                 }
             }
         },
+        // *************
      d1:
         {
             name: "d1",
@@ -252,15 +242,18 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.\n
-                        "There are no knights here anymore. No shortage of worms though."\n
-                    He can tell you're confused, so he continues.\n
-                        "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."\n
-                    The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be. 
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
+                    <button>Speak to the fisherman</button>
+                    <p>    "There are no knights here anymore. No shortage of worms though."</p>
+                    <p>He can tell you're confused, so he continues.</p>
+                    <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                    <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> 
                     `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML = "You think you can still hear the fisherman muttering to himself."
                 }
             }
         },
@@ -328,6 +321,7 @@ var areas = {
                 }
             }
         },
+        // *************
     e1:
         {
             name: "e1",
@@ -349,9 +343,11 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
+                    document.querySelector(".eventInfo").innerHTML = 
+                        `<p>While wading through the swamps you see massive rat. It's fangs are dripping with a pungent ooze.</p>
+                        <p>Will you fight the rat or escape?</p>
+                        <button id="option1">Fight</button>
+                        <button id = "option2">Flee</button>`
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
                 }
