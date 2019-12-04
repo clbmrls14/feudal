@@ -140,14 +140,10 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("e1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                        `You have arrived in the far reaches of the kingdom. Now go find the thing you need to find.
-                        Be careful of bandits!
-                        `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                var eventString = 
+                    `You're back where you started. But you can't turn back now!'
+                    `;
+                document.querySelector(".eventInfo").innerHTML = eventString;
             }
         },
     e2:
