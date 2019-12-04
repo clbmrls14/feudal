@@ -253,7 +253,11 @@ var areas = {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.\n
+                        "There are no knights here anymore. No shortage of worms though."\n
+                    He can tell you're confused, so he continues.\n
+                        "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."\n
+                    The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be. 
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;

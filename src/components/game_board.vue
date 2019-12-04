@@ -1,6 +1,7 @@
 <template>
 <main>
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
     <h1>Feudal, a game of Love and War</h1>
     <div id="board">
         <!-- Column 1 -->
@@ -202,7 +203,7 @@ export default {
     }
     div#board {
         display: grid;
-        grid-template-columns: 10em 10em 10em 10em 10em 15em;
+        grid-template-columns: 10em 10em 10em 10em 10em 20em;
         grid-template-rows: 10em 10em 10em 10em 10em;
         grid-template-areas:
             'a1 a2 a3 a4 a5 mh'
@@ -249,7 +250,10 @@ export default {
         border: 2px solid black;
         margin-top: 1em;
         grid-area: ph;
-        
+    }
+
+    .eventInfo {
+        font-family: 'Raleway', sans-serif;
     }
 
     .a1 { grid-area: a1; }
