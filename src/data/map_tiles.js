@@ -1,5 +1,4 @@
 import tiles from './tile.js';
-import events from './game_events.js';
 
 var areas = {
     a1:
