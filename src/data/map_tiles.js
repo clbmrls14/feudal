@@ -1,4 +1,6 @@
 import tiles from './tile.js';
+import player from './player.js'
+import map from './game_map.js'
 
 var areas = {
     a1:
@@ -387,6 +389,15 @@ var areas = {
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                }else if(map[2][3].eventCompleted && !player.items.includes("key")){
+                    var doneString =
+                    `The woman thanks you and gives you a key to the monastery that her husband used to teach at. 
+                    `;
+                    player.items.push('key');
+                    document.querySelector(".eventInfo").innerHTML = doneString;
+                } else {
+                    var compString = `This event is already completed`;
+                    document.querySelector(".eventInfo").innerHTML = compString;
                 }
             }
         },

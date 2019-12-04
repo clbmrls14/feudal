@@ -125,6 +125,7 @@
             <p> {{ player.name }} </p>
             <p>Health: {{ player.health }} </p>
             <p>Wealth: {{ player.money }} gold</p>
+            <p>Items: {{player.items}}</p>
         </div>
     </div>
     
