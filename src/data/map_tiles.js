@@ -73,10 +73,17 @@ var areas = {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     var eventString = 
-                    `If you can read this we are wizards.
+                    `As you enter the graveyard you are confronted by a man who appears to be the groundskeeper...
                     `;
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                }else if(!player.items.includes("crown")){
+                    var doneString =
+                    `You've defeated the groundskeeper you enter your password and get the sacred crown
+                    but it is missing the center jewel...
+                    `;
+                    player.items.push('crown');
+                    document.querySelector(".eventInfo").innerHTML = doneString;
                 }
             }
         },
@@ -97,7 +104,7 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted && player.items.includes("crown")) {
+                if ( player.items.includes("crown")) {
                     var eventString = 
                     `A shaman appears and offers the missing jewel to the crown: 
                     `;
