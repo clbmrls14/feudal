@@ -241,7 +241,7 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    if(player.items.includes("key")){
+                    if(!player.items.includes("password")){
                         player.items.push('password');
                     }
                     var eventString = 
