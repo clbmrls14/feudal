@@ -2,7 +2,7 @@ import weapons from './weapons.js';
 
 var player = {
     name: "Jaaronicus",
-    money: 4,
+    money: 1,
     health: 10,
     items: [],
     weapon: weapons[0]

@@ -128,6 +128,7 @@
             <p>Health: {{ player.health }} </p>
             <p>Wealth: {{ player.money }} gold</p>
             <p>Items: {{player.items}}</p>
+            <p>Weapon: {{player.weapon.name}}</p>
         </div>
     </div>
     
