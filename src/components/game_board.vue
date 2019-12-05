@@ -117,7 +117,7 @@
 
         <div class="map_hud">
             <h2>Map</h2>
-            <div class="eventInfo">beep boop</div>
+            <div class="eventInfo">Welcome knight do you have what it takes to be King</div>
             <div class="story"></div>
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 

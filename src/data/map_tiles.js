@@ -17,12 +17,42 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                if (!this.eventCompleted && !player.items.includes("missing jewel")) {
+                    window.a2 = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>You lunge forward swinging your sword wildly at the usurper</p>
+                        <p>He blocks your blow he blocks you blows with ease...</p>
+
+                        <p>You defeat the usurper</p>
+                        <p>You are now the King but you don't have the crown so you must always be on guard
+                        to keep you kingdom</p>
+                        
+                       `
+                        ;
+                        map[0][1].eventCompleted = true;
+                        alert("You have beat the game!");
+                        this.document.location.reload(true);
+                    };
+                    window.a2nd = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>"You decide to leave the castle and live to fight another day "</p>       
+                       `;
+                        
+                    };
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>You enter the castle sword drawn to fight the usurper for the kingdom</p>
+                    <p>As you near the usurper he stands up he is much bigger then you expected</p>
+                    <p>He says "it isn't too late to leave" </p>
+                    <button onclick="window.a2()">Fight</button>
+                    <button onclick="window.a2nd()">Flee</button>`;
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML = `
+                    <p>You have come to the castle with the sacred crown the usurper gives up the throne!</p>
+                    <p>You have won the game you are the King!</p>`;
+                    map[0][1].eventCompleted = true;
+                    alert("You have beat the game!");
+                   location.reload(true);
                 }
             }
         },
@@ -71,7 +101,7 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted && player.items.includes("scroll")) {
+                if (!this.eventCompleted && player.items.includes("scroll") && !player.items.includes("broken crown")) {
                     window.b1 = function() {
                         document.querySelector(".eventInfo").innerHTML = `
                         <p>You draw your sword strike the groundskeeper</p>
@@ -150,7 +180,7 @@ var areas = {
                         map[1][3].eventCompleted = true;
                     };
                     document.querySelector(".eventInfo").innerHTML = 
-                    `<p>A Shaman appears:</p>
+                    `<p>A Shaman appears and says:</p>
                     <p>"I carry something of great value to you..."</p>
                     <p>"I will give it to you but it will cost you dearly"</p>
                     <button onclick="window.b4()">Take Item</button>
@@ -305,10 +335,10 @@ var areas = {
             merchantHelped: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (this.merchantHelped) {
+                if (this.merchantHelped && player.health < 10) {
                     var eventString =`
                     <p>As you enter the town you see the merchant that you helped:</p>
-                    <p>The merchant heals you gain 4 health</p>
+                    <p>He says "because you helped me I will heal you"</p>
                     <p>You then run into a shop keeper</p>
                     <p>who asks "Do you want purchase a weapon"</p>
                     <p>"what kind of weapons do you have?"</p>
@@ -317,9 +347,13 @@ var areas = {
                     <p>"5 gold, do you wish to purchase the sword?"</p>
                     <button onclick="window.d3()">Yes </button>
                     <button onclick="window.d3nd()">No maybe next time</button>`;
-                    document.querySelector(".eventInfo").innerHTML =
                     
-                    player.health += 4;
+                    
+                    if(player.health > 6) {
+                        player.health = 10;
+                   } else{
+                       player.health += 4;
+                   }
                     this.merchantHelped = false;
                 }else{
                     var eventString =`<p>As you enter the town a shop keeper approaches you:</p>
@@ -332,7 +366,7 @@ var areas = {
                     <button onclick="window.d3nd()">No maybe next time</button>`;
                 }
                 if (player.weapon.name === "Old Sword") {
-                    if(!player.items.includes("scroll")){
+                    if(!player.items.includes("scroll") && player.items.includes("key")){
                         player.items.push('scroll');
                     }
                     window.d3 = function() {
@@ -360,10 +394,7 @@ var areas = {
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = `The shop keeper is gone I guess he only wanted you money`;
-                } if (this.merchantHelped) {
-                    document.querySelector(".eventInfo").innerHTML =
-                    `You helped the merchant!`;
-                }
+                } 
             } 
         },
     d4:
