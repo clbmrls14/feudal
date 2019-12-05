@@ -340,7 +340,7 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
                      <p>    "Please, please, I don't have much, just leave me be."</p>
-                     <p>
+                     <p>The 
                      <button onclick="window.e3()">Speak to the fisherman</button>
                      <div id="story"></div>`
                 }
