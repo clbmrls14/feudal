@@ -366,9 +366,10 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
+                window.clean();
                 document.querySelector(".eventInfo").innerHTML = 
-                `To the north you see mountains, to the south a lake. This idyllic valley seems welcoming, but 
-                seems completely void of animal life.`;
+                `<p>To the north you see mountains, to the south a lake. This idyllic valley seems welcoming, but 
+                seems completely void of animal life.</p>`;
             }
         },
     c3:
@@ -382,21 +383,23 @@ var areas = {
                 if (!this.eventCompleted) {
                     if (this.merchantHelped) {
                     document.querySelector(".eventInfo").innerHTML = 
-                    `The merchant that was stuck in the mud approaches you and offers to heal you
-                    since you helped him.`;
+                    `<p>The merchant that was stuck in the mud approaches you and offers to heal you
+                    since you helped him.</p>`;
                     if(player.health > 6) {
                         player.health = 10;
                     } else{
                        player.health += 4;
                     }
                     map_grid[2][2].merchantHelped = false;
+                    this.eventCompleted = true;
                     document.querySelector(".playerattack").innerHTML =
                     `<p style="color:red">You gain 4 health</p>`;
                     }
+                } else {
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>You can tell you're not the only one to travel this path. To south you see a small village.
+                    It looks far more appealing than the swamps to the east or mountains to the north.</p>`;
                 }
-                document.querySelector(".eventInfo").innerHTML = 
-                `You can tell you're not the only one to travel this path. To south you see a small village.
-                It looks far more appealing than the swamps to the east or mountains to the north.`;
             }
         },
     c4:

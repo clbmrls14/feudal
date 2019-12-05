@@ -135,8 +135,7 @@
             <p class="boy" style="color:blue"></p>
         </div>
     </div>
-    
-    
+<footer>By Caleb Morales and Jaaron Nielsen</footer>
 </main>
 </template>
 
@@ -280,6 +279,12 @@ export default {
         font-family: 'Raleway', sans-serif;
         padding: 0.5em;
         text-align: left;
+    }
+
+    footer {
+        color: lightgray;
+        font-style: italic;
+        padding: 1em;
     }
 
     .a1 { grid-area: a1; }
