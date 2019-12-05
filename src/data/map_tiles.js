@@ -424,11 +424,10 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("e1 event triggered!")
-                var eventString = 
-                    `You're back where you started. But you can't turn back now!'
-                    `;
-                document.querySelector(".eventInfo").innerHTML = eventString;
+                document.querySelector(".playerattack").innerHTML = "";
+                document.querySelector(".enemyattack").innerHTML = "";
+                document.querySelector(".eventInfo").innerHTML = 
+                `You're back where you started. But you can't turn back now!`;
             }
         },
     e2:
@@ -436,9 +435,68 @@ var areas = {
             name: "e2",
             tile_type: tiles.tile[1],
             eventCompleted: false,
+            ratHealth: 7,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
+                    window.random = function (min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+
+                    window.ratFight = function() {
+                        var damage = window.random(0,2);
+                        document.querySelector(".enemyattack").innerHTML = "";
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>The rat attacks, dealing ${damage} damage!</p>`;
+                        player.health -= damage;
+
+                        damage = window.random(player.weapon.lowStat,player.weapon.highStat);
+                        map[4][1].ratHealth -= damage;
+                        document.querySelector(".playerattack").innerHTML =
+                        `<p>You swing at the rat, dealing ${damage} damage!</p>
+                        <p>Rat Health: ${map[4][1].ratHealth}</p>`;
+
+                        if (map[4][1].ratHealth > 0) {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<button onclick="window.ratFight()">Attack</button>`;
+                        } else {
+                            // 
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<p>You slay the giant rat. It turns out the shiny object you saw was an old belt buckle.</p>
+                            <p>You cut off the rat's tail, it's probably worth a gold coin to someone.</p>
+                            <p style="color:gold">You gain 1 gold.</p>`;
+                            map[4][1].eventCompleted = true;
+                            player.money += 1;
+                        }
+                    }
+
+                    window.e2 = function(x) {
+                        var damage;
+                        switch(x) {
+                            case 0:
+                                damage = window.random(player.weapon.lowStat,player.weapon.highStat);
+                                document.querySelector(".enemyattack").innerHTML =
+                                `<p>You get the jump on the rat, dealing ${damage} damage!</p>
+                                <button onclick="window.ratFight()">Attack</button>`;
+                                 break;
+                            case 1:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `<p>You reach for the shiny object but the rat quickly turns and lunges at you!</p>
+                                <p>You hold your arm up to block the blow, but the rat bites down hard.</p>
+                                <p>You quickly shake the rat off, dealing 2 damage to the giant rat!</p>
+                                <p>Still, you feel the sting and a swell of blood where you were bitten.</p>
+                                <p style="color:red">You lose 2 health</p>`;
+                                player.health -= 2;
+                                map[4][1].ratHealth -= 2;
+                                document.querySelector(".enemyattack").innerHTML =
+                                `<button onclick="window.ratFight()">Attack</button>`;
+                                break;
+                            default:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `How did you do this? Explain yourself.`;
+                        };
+                        
+                    }
                     document.querySelector(".eventInfo").innerHTML = 
                         `<p>While wading through the swamps you see massive rat. It's fangs are dripping with a pungent ooze.</p>
                         <p>Will you fight the rat or escape?</p>
@@ -446,6 +504,10 @@ var areas = {
                         <button onclick="window.e2(1)">Attempt</button>`
                     //document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `The giant rat lays dead, worms eating it's flesh.`;
                 }
             }
         },
@@ -483,6 +545,8 @@ var areas = {
                         }
                         map[4][2].eventCompleted = true;
                     }
+                    document.querySelector(".playerattack").innerHTML = "";
+                    document.querySelector(".enemyattack").innerHTML = "";
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
                      <p>    "Please, please, I don't have much, just leave me be."</p>
