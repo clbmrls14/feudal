@@ -118,7 +118,9 @@
         <div class="map_hud">
             <h2>Map</h2>
             <div class="eventInfo">Welcome knight do you have what it takes to be King</div>
-            <div class="story"></div>
+            <div class="playerattack"></div>
+            <div class="enemyattack"></div>
+            <div class="buttons"></div>
             <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="player_hud">
@@ -128,6 +130,7 @@
             <p>Wealth: {{ player.money }} gold</p>
             <p>Items: {{player.items}}</p>
             <p>Weapon: {{player.weapon.name}}</p>
+            <p class="boy" style="color:blue"></p>
         </div>
     </div>
     
@@ -241,6 +244,7 @@ export default {
     }
 
     .map_hud {
+        overflow: auto;
         background-color: whitesmoke;
         font-family: 'Cinzel Decorative', cursive;
         font-weight: bold;
@@ -258,6 +262,18 @@ export default {
     }
 
     .eventInfo {
+        font-family: 'Raleway', sans-serif;
+        padding: 0.5em;
+        text-align: left;
+    }
+
+    .playerattack {
+        font-family: 'Raleway', sans-serif;
+        padding: 0.5em;
+        text-align: left;
+    }
+
+    .enemyattack {
         font-family: 'Raleway', sans-serif;
         padding: 0.5em;
         text-align: left;
