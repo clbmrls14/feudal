@@ -130,7 +130,7 @@ var areas = {
                         glimmering in the knights stiff hand. You open his curled fingers to find a gold 
                         piece.</p>
                         <p>You pocket the gold and bury the corpse.</p>
-                        <p>You gain 1 gold.</p>`
+                        <p style="color:gold">You gain 1 gold.</p>`
                         map[1][4].eventCompleted = true;
                         player.money += 1;
                         
@@ -317,13 +317,54 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
+                    window.random = function (min, max) {
+                        return Math.floor(Math.random() * (max - min + 1) ) + min;
+                      }
+                    window.e2 = function(x) {
+                        var ratHealth = 7;
+                        var damage;
+                        switch(x) {
+                            case 0:
+                                document.querySelector(".eventInfo").innerHTML = 
+                                ``;
+                                 break;
+                            case 1:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `<p>You reach for the shiny object but the rat quickly turns and lunges at you!</p>
+                                <p>You hold your arm up to block the blow, but the rat bites down hard.</p>
+                                <p>You quickly shake the rat off, dealing 2 damage to the giant rat!</p>
+                                <p>Still, you feel the sting and a swell of blood where you were bitten.</p>
+                                <p style="color:red">You lose 2 health</p>`;
+                                player.health -= 2;
+                                ratHealth -= 2;
+                                break;
+                            default:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `How did you do this? Explain yourself.`;
+                        };
+                        while (ratHealth > 0) {
+                            damage = window.random(0,2);
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<p>The rat attacks, dealing ${damage}!</p>`;
+
+                            damage = Math.floor(Math.random() * player.weapon.highStat) + player.weapon.lowStat;
+                            document.querySelector(".playerattack").innerHTML =
+                            `<p>You swing at the rat, dealing ${damage}!</p>`;
+                            ratHealth -= damage;
+                        }
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>You slay the giant rat. It turns out the shiny object you saw was an old belt buckle.</p>
+                         <p>You cut off the rat's tail, it's probably worth a gold coin to someone.</p>
+                         <p style="color:gold">You gain 1 gold.</p>`;
+                         map[4][1].eventCompleted = true;
+                         player.money += 1;
+                    }
                     document.querySelector(".eventInfo").innerHTML = 
                         `<p>While wading through the swamps you see massive rat. It's fangs are dripping with a pungent ooze.</p>
+                        <p>The ray doesn't see you yet, so you could leave. But you see something glimmering at it's feet...</p>
                         <p>Will you fight the rat or escape?</p>
                         <button onclick="window.e2(0)">Fight</button>
-                        <button onclick="window.e2(1)">Attempt</button>`
-                    //document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                        <button onclick="window.e2(1)">Take the shiny object</button>`
                 }
             }
         },
@@ -343,7 +384,7 @@ var areas = {
                                  as he pleads for his life.</p>
                                  <p>    "Please, please... This land is rotten enough."</p>
                                  <p>You take the gold from the cashbox and leave the merchant pleading in the mud.</p>
-                                 <p>You gain 3 gold.</p>`;
+                                 <p style="color:gold">You gain 3 gold.</p>`;
                                  player.money +=3;
                                  map[3][2].merchantHelped = false;
                                  break;
@@ -359,7 +400,7 @@ var areas = {
                                 document.querySelector(".eventInfo").innerHTML =
                                 `How did you do this? Explain yourself.`;
                         }
-                        map[4][2].eventCompleted = true;
+                        
                     }
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
@@ -368,14 +409,15 @@ var areas = {
                      cashbox, clearly he has <i>something</i>.
                      <p>He could use some help, but it seems like he'd rather you just move on.</p>
                      <button onclick="window.e3(0)">Rob the merchant</button>
-                     <button onclick="window.e3(1)">Unstuck the cart</button>`
+                     <button onclick="window.e3(1)">Unstuck the cart</button>`;
+                     map[4][2].eventCompleted = true;
                 }
                 else if (map[3][2].merchantHelped) {
                     document.querySelector(".eventInfo").innerHTML = 
                     `You see the mud puddle where the merchant was stuck. The village is to the north.`;
                 } else {
                     document.querySelector(".eventInfo").innerHTML = 
-                    `The merchant is gone, the cashbox too. The cart is abandoned, but it's empty.`;
+                    `The merchant is gone. The cart is abandoned, but it's empty.`;
                 }
             }
         },
