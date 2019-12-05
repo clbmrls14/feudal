@@ -118,7 +118,9 @@
 
         <div class="map_hud">
             <h2>Map</h2>
-            <div class="eventInfo">Welcome knight do you have what it takes to be King</div>
+            <div class="eventInfo">You've arrived in the far reaches of a foreign kingdom. There's no 
+                turning back now.
+            </div>
             <div class="playerattack"></div>
             <div class="enemyattack"></div>
             <div class="buttons"></div>
