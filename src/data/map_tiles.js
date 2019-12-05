@@ -30,6 +30,7 @@ var areas = {
             event: function() {
                 if (!this.eventCompleted) {
                     window.kingSlay = function() {
+                        window.clean();
                         var damage = window.random(3,5);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
@@ -41,7 +42,7 @@ var areas = {
                         map[0][1].usurperHealth -= damage;
                         document.querySelector(".playerattack").innerHTML =
                         `<p>You strike at the Usurper, dealing ${damage} damage!</p>
-                        <p>Gravekeeper Health: ${map[0][1].usurperHealth}</p>`;
+                        <p>Usurper Health: ${map[0][1].usurperHealth}</p>`;
 
                         if (map[0][1].usurperHealth > 0) {
                             document.querySelector(".enemyattack").innerHTML =
@@ -55,8 +56,6 @@ var areas = {
                             hear the sound of bird chirping in the distance.</p>
                             <button onclick="endGame(0)">Rest your Eyes</button>`;
                         }
-                        alert("You have beat the game!");
-                        this.document.location.reload(true);
                     };
 
                     window.usurp = function() {
@@ -171,11 +170,11 @@ var areas = {
             name: "b1",
             tile_type: tiles.tile[0],
             eventCompleted: false,
-            graveHealth: 8,
+            graveHealth: 9,
             event: function() {
                 if (!this.eventCompleted) {
                     window.graveFight = function() {
-                        var damage = window.random(2,4);
+                        var damage = window.random(2,3);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The Gravekeeper swings his shovel, dealing ${damage} damage!</p>
@@ -455,12 +454,12 @@ var areas = {
             name: "c5",
             tile_type: tiles.tile[1],
             eventCompleted: false,
-            dogHealth: 7,
+            dogHealth: 8,
             event: function() {
                 window.clean();
                 if (!this.eventCompleted) {
                     window.c5 = function() {
-                        var damage = window.random(1,3);
+                        var damage = window.random(1,2);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The dog jumps at you, dealing ${damage} damage!</p>
@@ -557,23 +556,21 @@ var areas = {
                 window.d3 = function() {
                     window.clean();
                     document.querySelector(".eventInfo").innerHTML = 
-                    `<p>As you enter the town a shop keeper approaches you:</p>
-                    <p>and asks "Do you want purchase a weapon"</p>
-                    <p>"what kind of weapons do you have?"</p>
-                    <p>The shop keeper pulls out a shiny sword "The best swords in the kingdom"</p>
-                    <p>"How much is it?"</p>
-                    <p>"5 gold, do you wish to purchase the sword?"</p>
-                    <button onclick="window.purchase()">Yes</button>`;
+                    `<p>The village square is more empty than you expected.</p>
+                    <p>There looks to be a blacksmith in town selling some decent blades.</p>
+                    <p>If you have six gold pieces you should be able to afford a new sword.</p>
+                    <button onclick="window.purchase()">Purchase Sword</button>`;
                 }
 
                 window.purchase = function() {
-                    if(player.money >= 5){
-                        document.querySelector(".eventInfo").innerHTML = `<p>You pay the man for the sword 
-                        and attach it to your hip as you remove your old sword</p>`;
+                    if(player.money >= 6){
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>You give six gold pieces to the blacksmith. He seems surprised, but hands you the new sword.</p>
+                        <p style="color:goldenrod">You lose 6 gold.</p>`;
                         player.weapon = weapons[1];
-                        player.money -= 5;
+                        player.money -= 6;
                    } else {
-                    document.querySelector(".eventInfo").innerHTML = `<p>You don't have enough money you must leave and find more!</p>`;
+                    document.querySelector(".eventInfo").innerHTML = `<p>You don't have enough to purchase the sword.</p>`;
                    }
                 }
 
@@ -691,12 +688,10 @@ var areas = {
                             case 1:
                                 document.querySelector(".eventInfo").innerHTML =
                                 `<p>You reach for the shiny object but the rat quickly turns and lunges at you!</p>
-                                <p>You hold your arm up to block the blow, but the rat bites down hard.</p>
-                                <p>You quickly shake the rat off, dealing 1 damage to the giant rat!</p>
+                                <p>You hold your arm up to block the blow, but the rat bites down hard. You quickly shake the rat off.</p>
                                 <p>Still, you feel the sting and a swell of blood where you were bitten.</p>
                                 <p style="color:red">You lose 2 health</p>`;
                                 player.health -= 2;
-                                map[4][1].ratHealth -= 1;
                                 document.querySelector(".enemyattack").innerHTML =
                                 `<button onclick="window.ratFight()">Attack</button>`;
                                 break;
