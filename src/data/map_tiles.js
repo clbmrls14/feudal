@@ -1,6 +1,7 @@
 import tiles from './tile.js';
 import player from './player.js'
 import map from './game_map.js'
+import weapons from './weapons.js';
 
 var areas = {
     a1:
@@ -304,23 +305,47 @@ var areas = {
             merchantHelped: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
+                if (player.weapon.name === "Old Sword") {
                     if(!player.items.includes("scroll")){
                         player.items.push('scroll');
                     }
-                    
-                    var eventString = 
-                    `You've entered the town do you wish to purchase a weapon?
-                    `;
-                    
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                    window.d3 = function() {
+                       if(player.money >= 5){
+                            document.querySelector(".eventInfo").innerHTML = `<p>You pay the man for the sword 
+                            and attach it to your hip as you remove your old sword</p>`;
+                            player.weapon = weapons[1];
+                            player.money -= 5;
+                       } else{
+                        document.querySelector(".eventInfo").innerHTML = `<p>You don't have enough money you must leave and find more!</p>`;
+                       }
+                        
+                    };
+                    window.d3nd = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>As walk away from the shop the shop owner says </p>
+                        <p>"Come back soon we would love to do business with you!"</p>
+                        <p>You think to yourself "that man was almost too nice to be living in this desolate place"</p>
+                        
+                       `
+                        ;
+                    };
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>As you enter the town a shop keeper approaches you:</p>
+                    <p>and asks "Do you want purchase a weapon"</p>
+                    <p>"what kind of weapons do you have?"</p>
+                    <p>The shop keeper pulls out a shiny sword "The best swords in the kingdom"</p>
+                    <p>"How much is it?"</p>
+                    <p>"5 gold, do you wish to purchase the sword?"</p>
+                    <button onclick="window.d3()">Yes </button>
+                    <button onclick="window.d3nd()">No maybe next time</button>`;
                 }
-                if (this.merchantHelped) {
+                else {
+                    document.querySelector(".eventInfo").innerHTML = `The shop keeper is gone I guess he only wanted you money`;
+                } if (this.merchantHelped) {
                     document.querySelector(".eventInfo").innerHTML =
                     `You helped the merchant!`;
                 }
-            }
+            } 
         },
     d4:
         {
