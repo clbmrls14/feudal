@@ -70,21 +70,44 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `As you enter the graveyard you are confronted by a man who appears to be the groundskeeper...
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }else if(!player.items.includes("crown")){
-                    var doneString =
-                    `You've defeated the groundskeeper you enter your password and get the sacred crown
-                    but it is missing the center jewel...
-                    `;
-                    player.items.push('broken crown');
-                    document.querySelector(".eventInfo").innerHTML = doneString;
+                if (!this.eventCompleted && player.items.includes("scroll")) {
+                    window.b1 = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>You draw your sword strike the groundskeeper</p>
+                        <p>He blocks your blow and returns a with a strike of his own...</p>
+
+                        <p>You use the scroll to enter a room where you retrieve a the sacred crown</p>
+                        <p>but it is missing the center stone</p>
+                        
+                       `
+                        ;
+                        player.items.push("broken crown")
+                        map[1][0].eventCompleted = true;
+                    };
+                    window.b1nd = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>"The groundskeeper buys your scroll for 4 gold "</p>
+                        <p>You take your gold and head south...</p>
+
+                        
+                       `
+                        ;
+                        player.money +=4;
+                        map[1][0].eventCompleted = true;
+                    };
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>As you enter the graveyard you are confronted by a man who appears to be the groundskeeper...</p>
+                    <p>"He tells you that you aren't welcome and you can't enter"</p>
+                    <p>"I'll pay you an handsome sum if you leave now"</p>
+                    <p>You think to yourself "I wonder what he is hiding in there"</p>
+                    <button onclick="window.b1()">Fight</button>
+                    <button onclick="window.b1nd()">Take gold</button>`;
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML = "The graveyard is desolate, the groundskeeper is gone... ";
                 }
             }
+                    
         },
     b2:
         {
@@ -103,17 +126,41 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 //alert("d1 event triggered!")
-                if ( player.items.includes("broken crown")) {
-                    var eventString = 
-                    `A shaman appears and offers the missing jewel to the crown: 
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                } else {
+                if ( !this.eventCompleted && player.items.includes("broken crown") && !player.items.includes("missing jewel"))  {
+                    window.b4 = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>The Shaman pulls out the missing stone</p>
+                        <p>As the stone touches your hand you feel your life leaving you</p>
+                        
+                       `
+                        ;
+                        player.health -= 4;
+                        player.items.push("missing jewel");
+                        map[1][3].eventCompleted = true;
+                    };
+                    window.b4nd = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>The Shaman threatens to take your life</p>
+                        <p>You grab you things and flee as fast as you can</p>
+                        <p>You can hear the Shaman cackling as you flee</p>
+                        <p>You think to yourself "I hope that I never run into him again</p>
+                       `
+                        ;
+                        map[1][3].eventCompleted = true;
+                    };
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>A Shaman appears:</p>
+                    <p>"I carry something of great value to you..."</p>
+                    <p>"I will give it to you but it will cost you dearly"</p>
+                    <button onclick="window.b4()">Take Item</button>
+                    <button onclick="window.b4nd()">Flee</button>`;
+                }
+                else {
                     document.querySelector(".eventInfo").innerHTML = `This place gives you an eerie 
-                    feeling like you are being watched.`;
+                    feeling like you are being watched. `;
                 }
             }
+                    
         },
     b5:
         {
@@ -257,8 +304,8 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    if(!player.items.includes("password")){
-                        player.items.push('password');
+                    if(!player.items.includes("scroll")){
+                        player.items.push('scroll');
                     }
                     var eventString = 
                     `You've entered the town do you wish to purchase a weapon?
@@ -340,7 +387,7 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
                      <p>    "Please, please, I don't have much, just leave me be."</p>
-                     <p>The 
+                     <p>
                      <button onclick="window.e3()">Speak to the fisherman</button>
                      <div id="story"></div>`
                 }
@@ -370,7 +417,7 @@ var areas = {
                     player.items.push('key');
                     document.querySelector(".eventInfo").innerHTML = doneString;
                 } else {
-                    var compString = `This event is already completed`;
+                    var compString = `The woman is no longer here`;
                     document.querySelector(".eventInfo").innerHTML = compString;
                 }
             }
