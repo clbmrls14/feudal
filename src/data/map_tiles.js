@@ -31,14 +31,19 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>To the east lies an old castle, smoke rising from its courtyard.</p>
+                    <p>You're surrounded by the remains of battle. Arrows stick out of the ground, 
+                    the earth is charred in some places. Worms crawl from every direction towards
+                    the castle, and you feel a terrible sense of dread.</p>`;
+                    this.eventCompleted=true;
                 }
+                else {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>To the east lies an old castle, smoke rising from its courtyard.</p>`;
+                }
+                
             }
         },
     a4:
@@ -47,14 +52,8 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }
+                document.querySelector(".eventInfo").innerHTML =
+                    `You're as far north as you can go, and you're starting to feel the cold in your bones.`;
             }
             
         },
@@ -111,7 +110,7 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
                 } else {
-                    document.querySelector(".eventInfo").innerHTML = `This place gives you a eery 
+                    document.querySelector(".eventInfo").innerHTML = `This place gives you an eerie 
                     feeling like you are being watched.`;
                 }
             }
@@ -124,11 +123,28 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                    window.b5 = function() {
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>You take some time to bury the knight. You choose to bury him in the soft earth
+                        just south by the swamp. As you lift the body into the grave, you notice something 
+                        glimmering in the knights stiff hand. You open his curls fingers to find two gold 
+                        pieces.</p>
+                        <p>You pocket the gold and bury the corpse.</p>
+                        <p>You gain 2 gold.</p>`
+                        map[1][4].eventCompleted = true;
+                        player.money += 2;
+                        
+                    }
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>You stumble across the body of a knight lying against a tree stump, arrows
+                     still stuck in his chest. His sword must have been taken by mauraders, there's
+                     nothing but a corpse in worn armor left.<p>
+                     <button onclick="window.b5()">Bury the knight</button>
+                     <div id="story"></div>`;
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML =
+                    ``;
                 }
             }
         },
@@ -209,7 +225,7 @@ var areas = {
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
-                    window.tellStory = function() {
+                    window.d1 = function() {
                         document.getElementById("story").innerHTML = `
                         <p>    "There are no knights here anymore. No shortage of worms though."</p>
                         <p>He can tell you're confused, so he continues.</p>
@@ -220,7 +236,7 @@ var areas = {
                     };
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
-                    <button onclick="window.tellStory()">Speak to the fisherman</button>
+                    <button onclick="window.d1()">Speak to the fisherman</button>
                     <div id="story"></div>`
                 }
                 else {
