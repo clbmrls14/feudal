@@ -771,6 +771,7 @@ var areas = {
             name: "e4",
             tile_type: tiles.tile[0],
             eventCompleted: false,
+            womanVisited: true,
             event: function() {
                 if (!this.eventCompleted) {
                     if (!map[2][3].eventCompleted) {
@@ -779,7 +780,8 @@ var areas = {
                         Between the weeping you can make out a few words.</p>
                         <p>     "My son... Please..."</p>
                         <p>She points to the north, but you can't make out what she's saying anymore.</p>`;
-                    } else if (map[2][3].eventCompleted && !player.items.includes("key")) {
+                        map[4][3].womanVisited;
+                    } else if (map[2][3].eventCompleted && !player.items.includes("key") && map[2][3].womanVisited) {
                         document.querySelector(".eventInfo").innerHTML = 
                         `<p>As soon as you approach the woman she sees her son. They run to each other and embrace. You turn 
                         to walk away, but the woman calls you over.</p>
