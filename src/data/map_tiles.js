@@ -305,6 +305,32 @@ var areas = {
             merchantHelped: false,
             event: function() {
                 //alert("d1 event triggered!")
+                if (this.merchantHelped) {
+                    var eventString =`
+                    <p>As you enter the town you see the merchant that you helped:</p>
+                    <p>The merchant heals you gain 4 health</p>
+                    <p>You then run into a shop keeper</p>
+                    <p>who asks "Do you want purchase a weapon"</p>
+                    <p>"what kind of weapons do you have?"</p>
+                    <p>The shop keeper pulls out a shiny sword "The best swords in the kingdom"</p>
+                    <p>"How much is it?"</p>
+                    <p>"5 gold, do you wish to purchase the sword?"</p>
+                    <button onclick="window.d3()">Yes </button>
+                    <button onclick="window.d3nd()">No maybe next time</button>`;
+                    document.querySelector(".eventInfo").innerHTML =
+                    
+                    player.health += 4;
+                    this.merchantHelped = false;
+                }else{
+                    var eventString =`<p>As you enter the town a shop keeper approaches you:</p>
+                    <p>and asks "Do you want purchase a weapon"</p>
+                    <p>"what kind of weapons do you have?"</p>
+                    <p>The shop keeper pulls out a shiny sword "The best swords in the kingdom"</p>
+                    <p>"How much is it?"</p>
+                    <p>"5 gold, do you wish to purchase the sword?"</p>
+                    <button onclick="window.d3()">Yes </button>
+                    <button onclick="window.d3nd()">No maybe next time</button>`;
+                }
                 if (player.weapon.name === "Old Sword") {
                     if(!player.items.includes("scroll")){
                         player.items.push('scroll');
@@ -329,15 +355,8 @@ var areas = {
                        `
                         ;
                     };
-                    document.querySelector(".eventInfo").innerHTML = 
-                    `<p>As you enter the town a shop keeper approaches you:</p>
-                    <p>and asks "Do you want purchase a weapon"</p>
-                    <p>"what kind of weapons do you have?"</p>
-                    <p>The shop keeper pulls out a shiny sword "The best swords in the kingdom"</p>
-                    <p>"How much is it?"</p>
-                    <p>"5 gold, do you wish to purchase the sword?"</p>
-                    <button onclick="window.d3()">Yes </button>
-                    <button onclick="window.d3nd()">No maybe next time</button>`;
+                    document.querySelector(".eventInfo").innerHTML = eventString;
+                    
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = `The shop keeper is gone I guess he only wanted you money`;
