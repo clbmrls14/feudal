@@ -26,12 +26,12 @@ var areas = {
             name: "a2",
             tile_type: tiles.tile[4],
             eventCompleted: false,
-            usurperHealth: 12,
+            usurperHealth: 14,
             event: function() {
                 if (!this.eventCompleted) {
                     window.kingSlay = function() {
                         window.clean();
-                        var damage = window.random(3,5);
+                        var damage = window.random(1,4);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The Usurper strikes at you with his sword, dealing ${damage} damage!</p>
@@ -174,7 +174,7 @@ var areas = {
             event: function() {
                 if (!this.eventCompleted) {
                     window.graveFight = function() {
-                        var damage = window.random(2,3);
+                        var damage = window.random(1,3);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The Gravekeeper swings his shovel, dealing ${damage} damage!</p>
@@ -404,12 +404,12 @@ var areas = {
             name: "c4",
             tile_type: tiles.tile[1],
             eventCompleted: false,
-            banditHealth: 10,
+            banditHealth: 9,
             event: function() {
                 window.clean();
                 if (!this.eventCompleted) {
                     window.c4 = function() {
-                        var damage = window.random(2,4);
+                        var damage = window.random(0,3);
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The bandit lunges, dealing ${damage} damage!</p>
@@ -454,12 +454,12 @@ var areas = {
             name: "c5",
             tile_type: tiles.tile[1],
             eventCompleted: false,
-            dogHealth: 8,
+            dogHealth: 7,
             event: function() {
                 window.clean();
                 if (!this.eventCompleted) {
                     window.c5 = function() {
-                        var damage = window.random(1,2);
+                        var damage = 1;
                         document.querySelector(".enemyattack").innerHTML = "";
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The dog jumps at you, dealing ${damage} damage!</p>
@@ -503,7 +503,6 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     window.d1 = function() {
                         document.querySelector(".eventInfo").innerHTML = `
@@ -644,11 +643,11 @@ var areas = {
             name: "e2",
             tile_type: tiles.tile[1],
             eventCompleted: false,
-            ratHealth: 7,
+            ratHealth: 6,
             event: function() {
                 if (!this.eventCompleted) {
                     window.ratFight = function() {
-                        var damage = window.random(0,2);
+                        var damage = window.random(0,1);
                         window.clean();
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>The rat attacks, dealing ${damage} damage!</p>
