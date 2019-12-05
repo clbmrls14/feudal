@@ -174,12 +174,12 @@ var areas = {
                         document.querySelector(".eventInfo").innerHTML =
                         `<p>You take some time to bury the knight. You choose to bury him in the soft earth
                         just south by the swamp. As you lift the body into the grave, you notice something 
-                        glimmering in the knights stiff hand. You open his curls fingers to find two gold 
-                        pieces.</p>
+                        glimmering in the knights stiff hand. You open his curled fingers to find a gold 
+                        piece.</p>
                         <p>You pocket the gold and bury the corpse.</p>
-                        <p>You gain 2 gold.</p>`
+                        <p>You gain 1 gold.</p>`
                         map[1][4].eventCompleted = true;
-                        player.money += 2;
+                        player.money += 1;
                         
                     }
                     document.querySelector(".eventInfo").innerHTML =
@@ -301,18 +301,24 @@ var areas = {
             name: "d3",
             tile_type: tiles.tile[3],
             eventCompleted: false,
+            merchantHelped: false,
             event: function() {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     if(!player.items.includes("scroll")){
                         player.items.push('scroll');
                     }
+                    
                     var eventString = 
                     `You've entered the town do you wish to purchase a weapon?
                     `;
                     
                     document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
+                }
+                if (this.merchantHelped) {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `You helped the merchant!`;
                 }
             }
         },
@@ -361,8 +367,8 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = 
                         `<p>While wading through the swamps you see massive rat. It's fangs are dripping with a pungent ooze.</p>
                         <p>Will you fight the rat or escape?</p>
-                        <button id="option1">Fight</button>
-                        <button id = "option2">Flee</button>`
+                        <button onclick="window.e2(0)">Fight</button>
+                        <button onclick="window.e2(1)">Attempt</button>`
                     //document.querySelector(".eventInfo").innerHTML = eventString;
                     this.eventCompleted= true;
                 }
@@ -375,24 +381,48 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 if (!this.eventCompleted) {
-                    window.e3 = function() {
-                        document.querySelector(".eventInfo").innerHTML = `
-                        <p>    "There are no knights here anymore. No shortage of worms though."</p>
-                        <p>He can tell you're confused, so he continues.</p>
-                        <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
-                        <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> `
-                        ;
-                        map[3][0].eventCompleted = true;
-                    };
+                    window.e3 = function(x) {
+                        switch(x) {
+                            case 0:
+                                document.querySelector(".eventInfo").innerHTML = 
+                                `<p>The merchant is easily overpowered, he collapses as soon as you draw your weapon.</p>
+                                 <p>You hold your weapon to his throat, and demand he open the cashbox. He does so quickly 
+                                 as he pleads for his life.</p>
+                                 <p>    "Please, please... This land is rotten enough."</p>
+                                 <p>You take the gold from the cashbox and leave the merchant pleading in the mud.</p>
+                                 <p>You gain 3 gold.</p>`;
+                                 player.money +=3;
+                                 map[3][2].merchantHelped = false;
+                                 break;
+                            case 1:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `<p>Without saying anything you go to the rear of the cart and lift the wheel out of the 
+                                mud. The cart isn't heavy, the merchant really must not have anything. With a strong push 
+                                the cart is freed.</p>
+                                <p>Without so much as a 'thank you', the merchant hurries off towards the village with his cart.</p>`;
+                                map[3][2].merchantHelped = true;
+                                break;
+                            default:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `How did you do this? Explain yourself.`;
+                        }
+                        map[4][2].eventCompleted = true;
+                    }
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
                      <p>    "Please, please, I don't have much, just leave me be."</p>
-                     <p>
-                     <button onclick="window.e3()">Speak to the fisherman</button>
-                     <div id="story"></div>`
+                     <p>The merchant is clearly nervous about your presence. He steps in front of what looks like a 
+                     cashbox, clearly he has <i>something</i>.
+                     <p>He could use some help, but it seems like he'd rather you just move on.</p>
+                     <button onclick="window.e3(0)">Rob the merchant</button>
+                     <button onclick="window.e3(1)">Unstuck the cart</button>`
                 }
-                else {
-                    document.querySelector(".eventInfo").innerHTML = "You think you can still hear the fisherman muttering to himself."
+                else if (map[3][2].merchantHelped) {
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `You see the mud puddle where the merchant was stuck. The village is to the north.`;
+                } else {
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `The merchant is gone, the cashbox too. The cart is abandoned, but it's empty.`;
                 }
             }
         },
