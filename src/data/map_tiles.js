@@ -144,7 +144,8 @@ var areas = {
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML =
-                    ``;
+                    `You can see the grave where you buried the knight. There are worms crawling in the dirt over
+                    the grave.`;
                 }
             }
         },
@@ -226,7 +227,7 @@ var areas = {
                 //alert("d1 event triggered!")
                 if (!this.eventCompleted) {
                     window.d1 = function() {
-                        document.getElementById("story").innerHTML = `
+                        document.querySelector(".eventInfo").innerHTML = `
                         <p>    "There are no knights here anymore. No shortage of worms though."</p>
                         <p>He can tell you're confused, so he continues.</p>
                         <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
@@ -236,8 +237,7 @@ var areas = {
                     };
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>There is a lake to the East, and a man fishing lazily. He sees you and beckons you over.</p>
-                    <button onclick="window.d1()">Speak to the fisherman</button>
-                    <div id="story"></div>`
+                    <button onclick="window.d1()">Speak to the fisherman</button>`
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = "You think you can still hear the fisherman muttering to himself."
@@ -327,8 +327,26 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                document.querySelector(".eventInfo").innerHTML =
-                `The path here leads to the village north, but it doesn't seem like it's been traveled for some time.`;
+                if (!this.eventCompleted) {
+                    window.e3 = function() {
+                        document.querySelector(".eventInfo").innerHTML = `
+                        <p>    "There are no knights here anymore. No shortage of worms though."</p>
+                        <p>He can tell you're confused, so he continues.</p>
+                        <p>    "The land here is rotten, and the usurper here is the reason. He's been driven mad by old prophecies."</p>
+                        <p>The man continues muttering as he goes back to fishing. You can't understand him anymore, so you leave him be.</p> `
+                        ;
+                        map[3][0].eventCompleted = true;
+                    };
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>On the road to the village you see an elderly merchant with a cart stuck in the mud.</p>
+                     <p>    "Please, please, I don't have much, just leave me be."</p>
+                     <p>
+                     <button onclick="window.e3()">Speak to the fisherman</button>
+                     <div id="story"></div>`
+                }
+                else {
+                    document.querySelector(".eventInfo").innerHTML = "You think you can still hear the fisherman muttering to himself."
+                }
             }
         },
     e4:
