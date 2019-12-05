@@ -1,5 +1,5 @@
 <template>
-<main>
+<main @click="checkHealth()">
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
     <h1>The Throne of Rot</h1>
@@ -195,6 +195,12 @@ export default {
                 //alert("This area is impassable")
             }
             this.$forceUpdate();
+        },
+        checkHealth () {
+            if (player.health < 1) {
+                alert(`You've been killed!`);
+                location.reload(true);
+            }
         },
         
     } 

@@ -38,23 +38,22 @@ var areas = {
                         player.health -= damage;
 
                         damage = window.random(player.weapon.lowStat,player.weapon.highStat);
-                        map[1][0].usurperHealth -= damage;
+                        map[0][1].usurperHealth -= damage;
                         document.querySelector(".playerattack").innerHTML =
                         `<p>You strike at the Usurper, dealing ${damage} damage!</p>
-                        <p>Gravekeeper Health: ${map[1][0].usurperHealth}</p>`;
+                        <p>Gravekeeper Health: ${map[0][1].usurperHealth}</p>`;
 
-                        if (map[1][0].usurperHealth > 0) {
+                        if (map[0][1].usurperHealth > 0) {
                             document.querySelector(".enemyattack").innerHTML =
                             `<button onclick="window.kingSlay()">Attack</button>`;
                         } else {
                             document.querySelector(".enemyattack").innerHTML =
                             `<p>The Usurper collapses to the floor, with a grin on his face. You clutch your wounds and limp towards the throne.</p>
-                            <p>You approach the crypt and speak the words on the scroll. The door to the crypt crumbles, 
-                            revealing small room, containing a broken crown, missing it's center jewel.</p>
-                            <p style="color:blue">Obtained the Broken Crown</p>
-                            <button onclick="endGame(0)">Take the Throne</button>`;
-                            map[1][0].eventCompleted = true;
-                            player.items.push("Broken Crown");
+                            <p>Before you take the throne, you look back and see that the Usurper has already been consumed by rot. You turn and 
+                            take a seat on the throne.</p>
+                            <p>A smile comes to your face and the vermin seem to have calmed down. As your eyes slowly close, you think you 
+                            hear the sound of bird chirping in the distance.</p>
+                            <button onclick="endGame(0)">Rest your Eyes</button>`;
                         }
                         alert("You have beat the game!");
                         this.document.location.reload(true);
@@ -84,7 +83,7 @@ var areas = {
                     window.endGame = function(x) {
                         switch (x) {
                             case 0:
-                                alert("You have beat the game!");
+                                alert("You've defeated the Usurper and sit on the throne. Congratulations!");
                                 location.reload(true);
                                 break;
                             case 1:
@@ -258,8 +257,8 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 window.clean();
-                if ( !this.eventCompleted) { 
-                    if (player.items.includes("Broken Crown") && !player.items.includes("Rotten Jewel")) { 
+                if (!this.eventCompleted && player.items.includes("Broken Crown")) { 
+                    if (!player.items.includes("Rotten Jewel")) { 
                         window.b4 = function(x) {
                             switch (x) {
                                 case 0:
@@ -297,6 +296,7 @@ var areas = {
                         document.querySelector(".eventInfo").innerHTML = 
                     `<p>The mysterious old woman is nowhere to be found, but this place still gives you a terrible feeling.</p>`;
                     }
+
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>As you traverse the swamp an old woman seemingly comes out of nowhere. She smiles at you in a way that makes 
                     your skin crawl.</p>
