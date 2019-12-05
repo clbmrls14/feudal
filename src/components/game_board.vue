@@ -2,114 +2,115 @@
 <main>
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
-    <h1>Feudal, a game of Love and War</h1>
+    <h1>The Throne of Rot</h1>
+    <h2>Sent to a desolate kingdom, you've been tasked to take the throne.</h2>
     <div id="board">
         <!-- Column 1 -->
-        <div class="a1" @mouseover="tile_hover = map_grid[0][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 0)">
+        <div class="a1" @click="move(0, 0)">
             <img class="tile_img" :src="map_grid[0][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][0]].src">
         </div>
-        <div class="a2" @mouseover="tile_hover = map_grid[0][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 1)">
+        <div class="a2" @click="move(0, 1)">
             <img class="tile_img" :src="map_grid[0][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][1]].src">
         </div>
-        <div class="a3" @mouseover="tile_hover = map_grid[0][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 2)">
+        <div class="a3" @click="move(0, 2)">
             <img class="tile_img" :src="map_grid[0][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][2]].src">
         </div>
-        <div class="a4" @mouseover="tile_hover = map_grid[0][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 3)">
+        <div class="a4" @click="move(0, 3)">
             <img class="tile_img" :src="map_grid[0][3].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][3]].src">
         </div>
-        <div class="a5" @mouseover="tile_hover = map_grid[0][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(0, 4)">
+        <div class="a5" @click="move(0, 4)">
             <img class="tile_img" :src="map_grid[0][4].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[0][4]].src">
         </div>
 
         <!-- Column 2 -->
-        <div class="b1" @mouseover="tile_hover = map_grid[1][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 0)">
+        <div class="b1" @click="move(1, 0)">
             <img class="tile_img" :src="map_grid[1][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][0]].src">
         </div>
-        <div class="b2" @mouseover="tile_hover = map_grid[1][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 1)">
+        <div class="b2" @click="move(1, 1)">
             <img  class="tile_img" :src="map_grid[1][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][1]].src">
         </div>
-        <div class="b3" @mouseover="tile_hover = map_grid[1][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 2)">
+        <div class="b3" @click="move(1, 2)">
             <img class="tile_img" :src="map_grid[1][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][2]].src">
         </div>
-        <div class="b4" @mouseover="tile_hover = map_grid[1][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 3)">
+        <div class="b4" @click="move(1, 3)">
             <img class="tile_img" :src="map_grid[1][3].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][3]].src">
         </div>
-        <div class="b5" @mouseover="tile_hover = map_grid[1][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(1, 4)">
+        <div class="b5" @click="move(1, 4)">
             <img class="tile_img" :src="map_grid[1][4].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[1][4]].src">
         </div>
         
         <!-- Column 3 -->
-        <div class="c1" @mouseover="tile_hover = map_grid[2][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 0)">
+        <div class="c1" @click="move(2, 0)">
             <img class="tile_img" :src="map_grid[2][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][0]].src">
         </div>
-        <div class="c2" @mouseover="tile_hover = map_grid[2][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 1)">
+        <div class="c2" @click="move(2, 1)">
             <img class="tile_img" :src="map_grid[2][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][1]].src">
         </div>
-        <div class="c3" @mouseover="tile_hover = map_grid[2][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 2)">
+        <div class="c3" @click="move(2, 2)">
             <img class="tile_img" :src="map_grid[2][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][2]].src">
         </div>
-        <div class="c4" @mouseover="tile_hover = map_grid[2][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 3)">
+        <div class="c4" @click="move(2, 3)">
             <img class="tile_img" :src="map_grid[2][3].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][3]].src">
         </div>
-        <div class="c5" @mouseover="tile_hover = map_grid[2][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(2, 4)">
+        <div class="c5" @click="move(2, 4)">
             <img class="tile_img" :src="map_grid[2][4].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[2][4]].src">
         </div>
 
         <!-- Column 4 -->
-        <div class="d1" @mouseover="tile_hover = map_grid[3][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 0)">
+        <div class="d1" @click="move(3, 0)">
             <img class="tile_img" :src="map_grid[3][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[3][0]].src">
         </div>
-        <div class="d2" @mouseover="tile_hover = map_grid[3][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 1)">
+        <div class="d2" @click="move(3, 1)">
             <img class="tile_img" :src="map_grid[3][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[3][1]].src">
         </div>
-        <div class="d3" @mouseover="tile_hover = map_grid[3][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 2)">
+        <div class="d3" @click="move(3, 2)">
             <img class="tile_img" :src="map_grid[3][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[3][2]].src">
         </div>
-        <div class="d4" @mouseover="tile_hover = map_grid[3][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 3)">
+        <div class="d4" @click="move(3, 3)">
             <img class="tile_img" :src="map_grid[3][3].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[3][3]].src">
         </div>
-        <div class="d5" @mouseover="tile_hover = map_grid[3][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(3, 4)">
+        <div class="d5" @click="move(3, 4)">
             <img class="tile_img" :src="map_grid[3][4].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[3][4]].src">
         </div>
 
         <!-- Column 5 -->
-        <div class="e1" @mouseover="tile_hover = map_grid[4][0].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 0)">
+        <div class="e1" @click="move(4, 0)">
             <img class="tile_img" :src="map_grid[4][0].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[4][0]].src">
         </div>
-        <div class="e2" @mouseover="tile_hover = map_grid[4][1].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 1)">
+        <div class="e2" @click="move(4, 1)">
             <img class="tile_img" :src="map_grid[4][1].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[4][1]].src">
         </div>
-        <div class="e3" @mouseover="tile_hover = map_grid[4][2].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 2)">
+        <div class="e3" @click="move(4, 2)">
             <img class="tile_img" :src="map_grid[4][2].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[4][2]].src">
         </div>
-        <div class="e4" @mouseover="tile_hover = map_grid[4][3].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 3)">
+        <div class="e4" @click="move(4, 3)">
             <img class="tile_img" :src="map_grid[4][3].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[4][3]].src">
         </div>
-        <div class="e5" @mouseover="tile_hover = map_grid[4][4].tile_type.title" @mouseleave="tile_hover = false" @click="move(4, 4)">
+        <div class="e5" @click="move(4, 4)">
             <img class="tile_img" :src="map_grid[4][4].tile_type.src">
             <img class="fig_img" :src="game.figures[fig_board[4][4]].src">
         </div>
@@ -121,13 +122,12 @@
             <div class="playerattack"></div>
             <div class="enemyattack"></div>
             <div class="buttons"></div>
-            <span v-if="tile_hover">{{ tile_hover }}</span>
         </div> 
         <div class="player_hud">
             <h2>Player</h2>
             <p> {{ player.name }} </p>
-            <p>Health: {{ player.health }} </p>
-            <p>Wealth: {{ player.money }} gold</p>
+            <p class="health">Health: {{ player.health }} </p>
+            <p class="wealth">Wealth: {{ player.money }} gold</p>
             <p>Items: {{player.items}}</p>
             <p>Weapon: {{player.weapon.name}}</p>
             <p class="boy" style="color:blue"></p>
@@ -156,7 +156,6 @@ export default {
                 map_grid,
                 fig_board,
                 game,
-                tile_hover: false,
                 player
             }
         },
@@ -195,7 +194,7 @@ export default {
             } else {
                 //alert("This area is impassable")
             }
-            //this.$forceUpdate();
+            this.$forceUpdate();
         },
         
     } 
@@ -203,9 +202,9 @@ export default {
 </script>
 
 <style scoped>
-    h1 {
+    h1,h2 {
         font-family: 'Cinzel Decorative', cursive;
-        padding: 1em;
+        padding: 0.5em;
     }
     div#board {
         display: grid;
@@ -240,7 +239,7 @@ export default {
         font-size: 125%;
         position: relative;
         top: 6em;
-        justify-content: left;
+        justify-content: center;
     }
 
     .map_hud {
@@ -261,30 +260,18 @@ export default {
         grid-area: ph;
     }
 
-    .eventInfo {
+    .health {
+        color: red;
+    }
+    
+    .wealth {
+        color: goldenrod;
+    }
+
+    .eventInfo, .playerattack, .enemyattack {
         font-family: 'Raleway', sans-serif;
         padding: 0.5em;
         text-align: left;
-    }
-
-    .playerattack {
-        font-family: 'Raleway', sans-serif;
-        padding: 0.5em;
-        text-align: left;
-    }
-
-    .enemyattack {
-        font-family: 'Raleway', sans-serif;
-        padding: 0.5em;
-        text-align: left;
-    }
-
-    button {
-        border: none;
-        color: slateblue;
-        padding: 1em;
-        text-align: center;
-        font-size: larger;
     }
 
     .a1 { grid-area: a1; }

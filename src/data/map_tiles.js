@@ -26,36 +26,98 @@ var areas = {
             name: "a2",
             tile_type: tiles.tile[4],
             eventCompleted: false,
+            usurperHealth: 12,
             event: function() {
-                //alert("d1 event triggered!")
-                if (!this.eventCompleted && !player.items.includes("missing jewel")) {
-                    window.a2 = function() {
-                        document.querySelector(".eventInfo").innerHTML = `
-                        <p>You lunge forward swinging your sword wildly at the usurper</p>
-                        <p>He blocks your blow he blocks you blows with ease...</p>
+                if (!this.eventCompleted) {
+                    window.kingSlay = function() {
+                        var damage = window.random(3,5);
+                        document.querySelector(".enemyattack").innerHTML = "";
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>The Usurper strikes at you with his sword, dealing ${damage} damage!</p>
+                        <p style="color:red">You lose ${damage} health</p>`;
+                        player.health -= damage;
 
-                        <p>You defeat the usurper</p>
-                        <p>You are now the King but you don't have the crown so you must always be on guard
-                        to keep you kingdom</p>
-                        
-                       `
-                        ;
-                        map[0][1].eventCompleted = true;
+                        damage = window.random(player.weapon.lowStat,player.weapon.highStat);
+                        map[1][0].usurperHealth -= damage;
+                        document.querySelector(".playerattack").innerHTML =
+                        `<p>You strike at the Usurper, dealing ${damage} damage!</p>
+                        <p>Gravekeeper Health: ${map[1][0].usurperHealth}</p>`;
+
+                        if (map[1][0].usurperHealth > 0) {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<button onclick="window.kingSlay()">Attack</button>`;
+                        } else {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<p>The Usurper collapses to the floor, with a grin on his face. You clutch your wounds and limp towards the throne.</p>
+                            <p>You approach the crypt and speak the words on the scroll. The door to the crypt crumbles, 
+                            revealing small room, containing a broken crown, missing it's center jewel.</p>
+                            <p style="color:blue">Obtained the Broken Crown</p>
+                            <button onclick="endGame(0)">Take the Throne</button>`;
+                            map[1][0].eventCompleted = true;
+                            player.items.push("Broken Crown");
+                        }
                         alert("You have beat the game!");
                         this.document.location.reload(true);
                     };
-                    window.a2nd = function() {
-                        document.querySelector(".eventInfo").innerHTML = `
-                        <p>"You decide to leave the castle and live to fight another day "</p>       
-                       `;
+
+                    window.usurp = function() {
+                        window.clean();
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>You place the crown on your head, fitted with a Rotten Jewel. It's heavy, and painful You draw 
+                        your sword, but a strange feeling comes over you.</p>
+                        <p>The sounds of creatures crawling becomes louder and louder, it's overwhelming. You close 
+                        your eyes. You can't help but fall to your knees as the sound overwhelms you.</p>
+                        <p>.....</p>
+                        <p>.....</p>
+                        <p>.....</p>
+                        <p>As the sound fades away, slowly you open your eyes. You remember being on your knees, but 
+                        you seem taller. Your legs seem stronger, the crown doesn't feel as heavy, and the Usurper is nowhere 
+                        in sight.</p>
+                        <p>The sound of spiders, insects, worms and flies doesn't bother you anymore, you actually seem to 
+                        draw strength from it...</p>
+                        <p>There's only one thing left to do...</p>
+                        <p>You take your seat on the throne, and smile to yourself.</p>
+                        <button onclick="endGame(1)">Take the Throne</button>`;
                         
                     };
+
+                    window.endGame = function(x) {
+                        switch (x) {
+                            case 0:
+                                alert("You have beat the game!");
+                                location.reload(true);
+                                break;
+                            case 1:
+                                alert(`You've taken the throne, and become the Usurper. Congratulations!`);
+                                location.reload(true);
+                                break;
+                            default:
+                                document.querySelector(".eventInfo").innerHTML =
+                                `How did you do this? Explain yourself.`;
+                                break;
+                        };
+                    }
+
                     document.querySelector(".eventInfo").innerHTML = 
-                    `<p>You enter the castle sword drawn to fight the usurper for the kingdom</p>
-                    <p>As you near the usurper he stands up he is much bigger then you expected</p>
-                    <p>He says "it isn't too late to leave" </p>
-                    <button onclick="window.a2()">Fight</button>
-                    <button onclick="window.a2nd()">Flee</button>`;
+                    `<p>You enter the castle crunching insects, worms and spiders under your feet. You walk into the main 
+                    hall, it's entirely empty, except for a single man on a throne. He looks small until he stands to approach 
+                    you. His skin seems to writhe and curl.</p>`;
+                    if (player.items.includes("Broken Crown")) {
+                        document.querySelector(".playerattack").innerHTML =
+                        `<p>As he gets nearer the crown on his head looks awfully familiar...</p>`;
+                    }
+                    document.querySelector(".enemyattack").innerHTML =
+                    `<p>You finally meet in the middle of the hall, the only sound is that of crawling creatures. The Usurper 
+                    looks at you and grins. He doesn't say anything, but you both know what comes next.</p>`;
+                    if (player.items.includes("Rotten Jewel")) {
+                        document.querySelector(".buttons").innerHTML =
+                        `<button onclick="window.kingSlay()">Slay the Usurper</button>
+                        <button onclick="window.usurp()">Wear the Rotten Crown</button>`;
+                    } else {
+                        document.querySelector(".buttons").innerHTML =
+                        `<button onclick="window.kingSlay()">Slay the Usurper</button>`;
+                    }
+                    
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = `
@@ -63,7 +125,7 @@ var areas = {
                     <p>You have won the game you are the King!</p>`;
                     map[0][1].eventCompleted = true;
                     alert("You have beat the game!");
-                   location.reload(true);
+                    location.reload(true);
                 }
             }
         },
@@ -110,55 +172,71 @@ var areas = {
             name: "b1",
             tile_type: tiles.tile[0],
             eventCompleted: false,
+            graveHealth: 8,
             event: function() {
-                window.graveFight = function() {
-                    var damage = window.random(2,4);
-                    document.querySelector(".enemyattack").innerHTML = "";
-                    document.querySelector(".eventInfo").innerHTML =
-                    `<p>The bandit lunges, dealing ${damage} damage!</p>
-                    <p style="color:red">You lose ${damage} health</p>`;
-                    player.health -= damage;
+                if (!this.eventCompleted) {
+                    window.graveFight = function() {
+                        var damage = window.random(2,4);
+                        document.querySelector(".enemyattack").innerHTML = "";
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>The Gravekeeper swings his shovel, dealing ${damage} damage!</p>
+                        <p style="color:red">You lose ${damage} health</p>`;
+                        player.health -= damage;
 
-                    damage = window.random(player.weapon.lowStat,player.weapon.highStat);
-                    map[1][0].banditHealth -= damage;
-                    document.querySelector(".playerattack").innerHTML =
-                    `<p>You swipe at the bandit, dealing ${damage} damage!</p>
-                    <p>Bandit Health: ${map[2][3].banditHealth}</p>`;
+                        damage = window.random(player.weapon.lowStat,player.weapon.highStat);
+                        map[1][0].graveHealth -= damage;
+                        document.querySelector(".playerattack").innerHTML =
+                        `<p>You attack the gravekeeper, dealing ${damage} damage!</p>
+                        <p>Gravekeeper Health: ${map[1][0].graveHealth}</p>`;
 
-                    if (map[1][0].banditHealth > 0) {
-                        document.querySelector(".enemyattack").innerHTML =
-                        `<button onclick="window.c4()">Attack</button>`;
-                    } else {
-                        document.querySelector(".enemyattack").innerHTML =
-                        `<p>The gravekeeper falls to the floor, motionless. He wasn't a young man, but you still find 
-                        yourself breathless after the fight.</p>
-                        <p>You approach the crypt and speak the words on the scroll. The crypt opens, revealing small
-                        room, containing a broken crown, missing it's center jewel.</p>`;
-                        map[1][0].eventCompleted = true;
-                        player.items.push("Broken Crown");
+                        if (map[1][0].graveHealth > 0) {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<button onclick="window.graveFight()">Attack</button>`;
+                        } else {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<p>The gravekeeper falls to the floor, motionless. He wasn't a young man, but you still find 
+                            yourself breathless after the fight.</p>
+                            <p>You approach the crypt and speak the words on the scroll. The door to the crypt crumbles, 
+                            revealing small room, containing a broken crown, missing it's center jewel.</p>
+                            <p style="color:blue">Obtained the Broken Crown</p>`;
+                            map[1][0].eventCompleted = true;
+                            player.items.push("Broken Crown");
+                        }
                     }
-                }
 
-                window.sellScroll = function() {
-                    document.querySelector(".eventInfo").innerHTML = 
-                    `<p>"The groundskeeper buys your scroll for 4 gold "</p>
-                    <p>You take your gold and head south...</p>`;
-                    player.money +=4;
-                    player.items.pop();
-                    map[1][0].eventCompleted = true;
-                };
+                    window.burnScroll = function() {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>For a tense moment you and the gravekeeper lock eyes. You toss the scroll into the fire, and sparks 
+                        float to the skies.</p>
+                        <p>Without saying anything, the gravekeeper tosses a bag at your feet, throws his shovel over his shoulder 
+                        and wanders off.</p>
+                        <p>You take your gold and leave. As you go, you can't help but wonder what's in the crypt.</p>
+                        <p style="color:gold">Obtained 4 gold</p>`;
+                        player.money +=4;
+                        player.items.pop();
+                        map[1][0].eventCompleted = true;
+                    };
 
-                if (!this.eventCompleted && player.items.includes("scroll") && !player.items.includes("broken crown")) {
+                    if (!this.eventCompleted && player.items.includes("Scroll") && !player.items.includes("Broken Crown")) {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>As you enter the graveyard a man confronts you. He gestures to the scroll in your hand.</p>
+                        <p>     "You don't know what you have there. This crypt is sealed for a reason."</p>
+                        <p>Behind the gravekeeper is a small crypt, with symbols resembling those on the Scroll you hold.</p>
+                        <p>     "Please... I'm not a wealthy man, but I will give you all I have if you destroy that scroll."</p>
+                        <p>He kneels over and lights the fire pit between the two of you.</p>
+                        <p>     "Burn the scroll. Within my power, I will not allow you to enter that crypt."</p>
+                        <p>The gravekeeper holds his shovel like a spear. You can tell that if you want access to the crypt you'll 
+                        need to get past him.</p>
+                        <button onclick="window.graveFight()">Fight</button>
+                        <button onclick="window.burnScroll()">Burn the Scroll</button>`;
+                    }
+                    else {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `There's an empty graveyard here, although it seems someone's been tending to it.`;
+                    }
+                } else {
                     document.querySelector(".eventInfo").innerHTML = 
-                    `<p>As you enter the graveyard you are confronted by a man who appears to be the groundskeeper...</p>
-                    <p>"He tells you that you aren't welcome and you can't enter"</p>
-                    <p>"I'll pay you an handsome sum if you leave now"</p>
-                    <p>You think to yourself "I wonder what he is hiding in there"</p>
-                    <button onclick="window.graveFight()">Fight</button>
-                    <button onclick="window.sellScroll()">Take gold</button>`;
-                }
-                else {
-                    document.querySelector(".eventInfo").innerHTML = "The graveyard is desolate, the groundskeeper is gone... ";
+                        `The graveyard is desolate, the groundskeeper is gone.`;
                 }
             }
                     
@@ -180,38 +258,59 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 window.clean();
-                if ( !this.eventCompleted && player.items.includes("broken crown") && !player.items.includes("missing jewel"))  {
-                    window.b4 = function() {
-                        document.querySelector(".eventInfo").innerHTML = `
-                        <p>The Shaman pulls out the missing stone</p>
-                        <p>As the stone touches your hand you feel your life leaving you</p>
-                        
-                       `
-                        ;
-                        player.health -= 4;
-                        player.items.push("missing jewel");
-                        map[1][3].eventCompleted = true;
-                    };
-                    window.b4nd = function() {
-                        document.querySelector(".eventInfo").innerHTML = `
-                        <p>The Shaman threatens to take your life</p>
-                        <p>You grab you things and flee as fast as you can</p>
-                        <p>You can hear the Shaman cackling as you flee</p>
-                        <p>You think to yourself "I hope that I never run into him again</p>
-                       `
-                        ;
-                        map[1][3].eventCompleted = true;
-                    };
+                if ( !this.eventCompleted) { 
+                    if (player.items.includes("Broken Crown") && !player.items.includes("Rotten Jewel")) { 
+                        window.b4 = function(x) {
+                            switch (x) {
+                                case 0:
+                                    document.querySelector(".eventInfo").innerHTML = 
+                                    `<p>The mysterious old woman pulls out the missing jewel from the crown.</p>
+                                    <p>     "Ah, the crown jewel. Not even stone is immune to the rot."</p>
+                                    <p>She places the jewel in your hand, and gently puts a hand on your cheek.</p>
+                                    <p style="color:blue">Obtained the Jewel</p>
+                                    <p>     "Now to take what's mine..."</p>
+                                    <p>Her fingernails press into the skin on your cheeks, and you feel something you've never  
+                                    experienced before... For a moment you feel as helpless as a child, and as quick as the feeling came on 
+                                    it disappears.</p>
+                                    <p style="color:red">You lose 4 health!</p>
+                                    <p>     "You've made your choice, child. I wish you well.</p>
+                                    <p>You can hardly move as blood drips down your cheeks. Your body feels stiff, and in a puddle you 
+                                    could swear your hair is grayer... Eventually you gather the strength to stand, and you carry on.</p>"`;
+                                    player.health -= 4;
+                                    player.items.push("Rotten Jewel");
+                                    map_grid[1][3].eventCompleted = true;
+                                    break;
+                                case 1:
+                                    document.querySelector(".eventInfo").innerHTML = 
+                                    `<p>The mysterious woman pulls away, and you suddenly feel free to move again.</p>
+                                    <p>     "Rot take you, child. It's already in you, I can see it."</p>
+                                    <p>As soon as she begins to wander off, she disappears.</p>`;
+                                    map_grid[1][3].eventCompleted = true;
+                                    break;
+                                default:
+                                    document.querySelector(".eventInfo").innerHTML =
+                                    `How did you do this? Explain yourself.`;
+                                    break;
+                            };
+                        };
+                    } else {
+                        document.querySelector(".eventInfo").innerHTML = 
+                    `<p>The mysterious old woman is nowhere to be found, but this place still gives you a terrible feeling.</p>`;
+                    }
                     document.querySelector(".eventInfo").innerHTML = 
-                    `<p>A Shaman appears and says:</p>
-                    <p>"I carry something of great value to you..."</p>
-                    <p>"I will give it to you but it will cost you dearly"</p>
-                    <button onclick="window.b4()">Take Item</button>
-                    <button onclick="window.b4nd()">Flee</button>`;
+                    `<p>As you traverse the swamp an old woman seemingly comes out of nowhere. She smiles at you in a way that makes 
+                    your skin crawl.</p>
+                    <p>     "I have something for you... And you have something for me..."</p>
+                    <p>She touches your shoulder but you pull away, hand on the hilt of your sword.</p>
+                    <p>     "I am not the rot, child. I only want your youth."</p>
+                    <p>You begin to leave, but some force stops you.</p>
+                    <p>     "I will not compel you. The choice is yours alone."</p>
+                    <button onclick="window.b4(0)">Give your Youth</button>
+                    <button onclick="window.b4(1)">Refuse</button>`;
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML = `This place gives you an eerie 
-                    feeling like you are being watched. `;
+                    feeling like you are being watched...`;
                 }
             }
                     
@@ -222,7 +321,7 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
+                window.clean();
                 if (!this.eventCompleted) {
                     window.b5 = function() {
                         document.querySelector(".eventInfo").innerHTML =
@@ -257,7 +356,7 @@ var areas = {
             tile_type: tiles.tile[1],
             eventCompleted: false,
             event: function() {
-                //alert("d1 event triggered!")
+                window.clean();
                 document.querySelector(".eventInfo").innerHTML = 
                 `You're in a dank swamp. It reeks of death, and to the north you see what looks like a graveyard.`;
             }
@@ -308,7 +407,7 @@ var areas = {
             eventCompleted: false,
             banditHealth: 10,
             event: function() {
-                //alert("d1 event triggered!")
+                window.clean();
                 if (!this.eventCompleted) {
                     window.c4 = function() {
                         var damage = window.random(2,4);
@@ -345,6 +444,9 @@ var areas = {
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>You've stumbled upon a bandit camp!</p>
                     <button onclick="window.c4(0)">Fight</button>`
+                } else {
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>It doesn't look like the bandits have returned. They didn't leave much anyway.</p>`;
                 }
             }
         },
@@ -353,14 +455,45 @@ var areas = {
             name: "c5",
             tile_type: tiles.tile[1],
             eventCompleted: false,
+            dogHealth: 7,
             event: function() {
                 window.clean();
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `If you can read this we are wizards.
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
+                    window.c5 = function() {
+                        var damage = window.random(1,3);
+                        document.querySelector(".enemyattack").innerHTML = "";
+                        document.querySelector(".eventInfo").innerHTML =
+                        `<p>The dog jumps at you, dealing ${damage} damage!</p>
+                        <p style="color:red">You lose ${damage} health</p>`;
+                        player.health -= damage;
+
+                        damage = window.random(player.weapon.lowStat,player.weapon.highStat);
+                        map[2][4].dogHealth -= damage;
+                        document.querySelector(".playerattack").innerHTML =
+                        `<p>You stab at the rabid dog, dealing ${damage} damage!</p>
+                        <p>Rabid Dog Health: ${map[2][4].dogHealth}</p>`;
+
+                        if (map[2][4].dogHealth > 0) {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<button onclick="window.c5()">Attack</button>`;
+                        } else {
+                            document.querySelector(".enemyattack").innerHTML =
+                            `<p>The rabid dog whines as you finish it off. You wipe the blood off your legs and realize 
+                            that some of it is your own.</p>
+                            <p>The chain that was around the dogs neck is still in good condition, enough to make you wonder 
+                            how it became such a rabid beast in the first place. You can probably get a gold piece for the chain.</p>
+                            <p style="color:goldenrod">You gain 1 gold.</p>`;
+                            map[2][4].eventCompleted = true;
+                            player.money += 1;
+                        }
+                    }
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>While wandering the swamp you come across a rabid dog. It growls at you, a warning to keep your distance.</p>
+                    <p>You can probably get away, but there's a chain around it's neck. It might be worth something...</p>
+                    <button onclick="window.c5(0)">Fight</button>`;
+                } else {
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>You can barely tell where the rabid dog was, except for the mound of worms and flies.</p>`
                 }
             }
         },
@@ -403,22 +536,19 @@ var areas = {
             eventCompleted: false,
             scrollGot: false,
             event: function() {
-                window.merchant = function() {
-                    document.querySelector(".eventInfo").innerHTML = 
-                    `<p>As you enter the town you see the merchant that you helped:</p>
-                    <p>He says "because you helped me I will heal you"</p>`;
-                    if(player.health > 6) {
-                        player.health = 10;
-                    } else{
-                       player.health += 4;
-                    }
-                    map_grid[3][2].merchantHelped = false;
-                    document.querySelector(".buttons").innerHTML =
-                    `<button onclick="window.d3()">Thank You</button>`;
-                } 
-
                 window.monastary = function() {
-                    player.items.push('scroll');
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>You head uphill to where the monastary is located. It's clear nobody has been here 
+                    in some time.</p>
+                    <p>You open the door with the key and wander inside. In the front on the chapel there 
+                    is a an old scroll, with words in a strange language. Suddenly you hear footsteps behind you.</p>
+                    <p>     "Since the usurper came to power my husband has preached from those scrolls every week.
+                    Something about those words... It kept the rot out."</p>
+                    <p>You look around; flies buzz through the air, spiders scurry in the corners.</p>
+                    <p>     "Not anymore."</p>
+                    <p>The woman leaves. Without anything else to say, you take the scroll.</p>
+                    <p style="color:blue">Obtained the Scroll.</p>`;
+                    player.items.push('Scroll');
                     map_grid[3][2].scrollGot = true;
                     document.querySelector(".buttons").innerHTML =
                     `<button onclick="window.d3()">Return to Village</button>`;
@@ -447,11 +577,7 @@ var areas = {
                    }
                 }
 
-                if (this.merchantHelped) {
-                    window.merchant();
-                    this.event();
-                }
-                if (!map_grid[3][2].scrollGot && player.items.includes("key")){
+                if (!map_grid[3][2].scrollGot && player.items.includes("Monastary Key")){
                     window.monastary();
                 } else if (player.weapon.name === "Old Sword") {
                     window.d3();
@@ -480,8 +606,28 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
-                document.querySelector(".eventInfo").innerHTML =
-                `You've reached the edge of the kingdom, you don't dare go further`;
+                window.eatFruit = function() {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>You pick some fruit and eat it in a small moment of tranquility.</p>
+                    <p style="color:red">You gain 2 health</p>`;
+                    if (player.health > 8) {
+                        player.health = 10;
+                    } else {
+                        player.health += 2;
+                    }
+                    map[3][4].eventCompleted = true;
+                }
+
+                window.clean();
+                if (!this.eventCompleted) {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `<p>There's a small fruit tree here, one of the only living things that seems to be thriving around here.</p>
+                    <button onclick="window.eatFruit()">Pick the Fruit</button>`;
+                } else {
+                    document.querySelector(".eventInfo").innerHTML =
+                    `The fruit tree is here, although there's no fruit left.`;
+                }
+                
             }
         },
         // *************
@@ -506,26 +652,27 @@ var areas = {
                 if (!this.eventCompleted) {
                     window.ratFight = function() {
                         var damage = window.random(0,2);
-                        document.querySelector(".playerattack").innerHTML =
+                        window.clean();
+                        document.querySelector(".eventInfo").innerHTML =
                         `<p>The rat attacks, dealing ${damage} damage!</p>
                         <p style="color:red">You lose ${damage} health</p>`;
                         player.health -= damage;
 
                         damage = window.random(player.weapon.lowStat,player.weapon.highStat);
                         map[4][1].ratHealth -= damage;
-                        document.querySelector(".enemyattack").innerHTML =
+                        document.querySelector(".playerattack").innerHTML =
                         `<p>You swing at the rat, dealing ${damage} damage!</p>
                         <p>Rat Health: ${map[4][1].ratHealth}</p>`;
 
                         if (map[4][1].ratHealth > 0) {
-                            document.querySelector(".buttons").innerHTML =
+                            document.querySelector(".enemyattack").innerHTML =
                             `<button onclick="window.ratFight()">Attack</button>`;
                         } else {
-                            document.querySelector(".buttons").innerHTML = "";
+                            //document.querySelector(".buttons").innerHTML = "";
                             document.querySelector(".enemyattack").innerHTML =
                             `<p>You slay the giant rat. It turns out the shiny object you saw was an old belt buckle.</p>
                             <p>You cut off the rat's tail, it's probably worth a gold coin to someone.</p>
-                            <p style="color:gold">You gain 1 gold.</p>`;
+                            <p style="color:goldenrod">You gain 1 gold.</p>`;
                             map[4][1].eventCompleted = true;
                             player.money += 1;
                         }
@@ -538,31 +685,33 @@ var areas = {
                                 damage = window.random(player.weapon.lowStat,player.weapon.highStat);
                                 document.querySelector(".eventInfo").innerHTML =
                                 `<p>You get the jump on the rat, dealing ${damage} damage!</p>`;
-                                window.ratFight();
-                                 break;
+                                document.querySelector(".enemyattack").innerHTML =
+                                `<button onclick="window.ratFight()">Attack</button>`;
+                                break;
                             case 1:
                                 document.querySelector(".eventInfo").innerHTML =
                                 `<p>You reach for the shiny object but the rat quickly turns and lunges at you!</p>
                                 <p>You hold your arm up to block the blow, but the rat bites down hard.</p>
-                                <p>You quickly shake the rat off, dealing 2 damage to the giant rat!</p>
+                                <p>You quickly shake the rat off, dealing 1 damage to the giant rat!</p>
                                 <p>Still, you feel the sting and a swell of blood where you were bitten.</p>
                                 <p style="color:red">You lose 2 health</p>`;
                                 player.health -= 2;
-                                map[4][1].ratHealth -= 2;
+                                map[4][1].ratHealth -= 1;
                                 document.querySelector(".enemyattack").innerHTML =
                                 `<button onclick="window.ratFight()">Attack</button>`;
                                 break;
                             default:
                                 document.querySelector(".eventInfo").innerHTML =
                                 `How did you do this? Explain yourself.`;
+                                break;
                         };
                         
                     }
                     document.querySelector(".eventInfo").innerHTML = 
                         `<p>While wading through the swamps you see massive rat. It's fangs are dripping with a pungent ooze.</p>
-                        <p>Will you fight the rat or escape?</p>
-                        <button onclick="window.e2(0)">Fight</button>
-                        <button onclick="window.e2(1)">Attempt</button>`;
+                        <p>You can probably avoid it, but you see something shiny at the rat's feet. You could try and swipe it...</p>
+                        <button onclick="window.e2(0)">Attack</button>
+                        <button onclick="window.e2(1)">Take shiny object</button>`;
                 }
                 else {
                     document.querySelector(".eventInfo").innerHTML =
@@ -587,9 +736,9 @@ var areas = {
                                  as he pleads for his life.</p>
                                  <p>    "Please, please... This land is rotten enough."</p>
                                  <p>You take the gold from the cashbox and leave the merchant pleading in the mud.</p>
-                                 <p>You gain 3 gold.</p>`;
+                                 <p style="color:goldenrod">You gain 3 gold.</p>`;
                                  player.money +=3;
-                                 map[3][2].merchantHelped = false;
+                                 map[2][2].merchantHelped = false;
                                  break;
                             case 1:
                                 document.querySelector(".eventInfo").innerHTML =
@@ -597,7 +746,7 @@ var areas = {
                                 mud. The cart isn't heavy, the merchant really must not have anything. With a strong push 
                                 the cart is freed.</p>
                                 <p>Without so much as a 'thank you', the merchant hurries off towards the village with his cart.</p>`;
-                                map[3][2].merchantHelped = true;
+                                map[2][2].merchantHelped = true;
                                 break;
                             default:
                                 document.querySelector(".eventInfo").innerHTML =
@@ -630,22 +779,39 @@ var areas = {
             eventCompleted: false,
             event: function() {
                 if (!this.eventCompleted) {
-                    var eventString = 
-                    `As you are traveling you run into a woman, weeping over a body on the side of the road.
-                    She tells you that her husband was killed and her son was taken by bandits. She pleads
-                    with you to help her...
-                    `;
-                    document.querySelector(".eventInfo").innerHTML = eventString;
-                    this.eventCompleted= true;
-                }else if(map[2][3].eventCompleted && !player.items.includes("key")){
-                    var doneString =
-                    `The woman thanks you and gives you a key to the monastery that her husband used to teach at.`;
-                    document.querySelector(".boy").innerHTML = "";
-                    player.items.push('key');
-                    document.querySelector(".eventInfo").innerHTML = doneString;
+                    if (!map[2][3].eventCompleted) {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>You come across a crying woman, kneeling over the corpse of a man. She begs you for help. 
+                        Between the weeping you can make out a few words.</p>
+                        <p>     "My son... Please..."</p>
+                        <p>She points to the north, but you can't make out what she's saying anymore.</p>`;
+                    } else if (map[2][3].eventCompleted && !player.items.includes("key")) {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>As soon as you approach the woman she sees her son. They run to each other and embrace. You turn 
+                        to walk away, but the woman calls you over.</p>
+                        <p>     "Please, take this. My husband taught at the village monastary. It might help protect 
+                        you from the rot."</p>
+                        <p>She hands you an old key. You nod and head on your way.</p>
+                        <p style="color:blue">Obtained the Monastary Key.</p>`;
+                        document.querySelector(".boy").innerHTML = "";
+                        player.items.push('Monastary Key');
+                        document.querySelector(".eventInfo").innerHTML = doneString;
+                    } else {
+                        document.querySelector(".eventInfo").innerHTML = 
+                        `<p>As you approach a wailing woman the boy following you runs to her. They both embrace, it must be his mother. 
+                        You turn to walk away, but the woman calls you over.</p>
+                        <p>     "Please, take this. My husband taught at the village monastary. It might help protect 
+                        you from the rot."</p>
+                        <p>She hands you an old key. You nod and head on your way.</p>
+                        <p style="color:blue">Obtained the Monastary Key.</p>`;
+                        document.querySelector(".boy").innerHTML = "";
+                        player.items.push('Monastary Key');
+                        document.querySelector(".eventInfo").innerHTML = doneString;
+                    }
                 } else {
-                    var compString = `The woman is no longer here`;
-                    document.querySelector(".eventInfo").innerHTML = compString;
+                    document.querySelector(".eventInfo").innerHTML = 
+                    `<p>The woman and her son are gone, but in the field is a shallow grave. Nearby plants have completely 
+                    withered since you were first here.</p>`;
                 }
             }
         },
