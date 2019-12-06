@@ -794,7 +794,7 @@ var areas = {
                         <p style="color:blue">Obtained the Monastary Key.</p>`;
                         document.querySelector(".boy").innerHTML = "";
                         player.items.push('Monastary Key');
-                        document.querySelector(".eventInfo").innerHTML = doneString;
+                        this.eventCompleted = true;
                     } else {
                         document.querySelector(".eventInfo").innerHTML = 
                         `<p>As you approach a wailing woman the boy following you runs to her. They both embrace, it must be his mother. 
@@ -805,7 +805,7 @@ var areas = {
                         <p style="color:blue">Obtained the Monastary Key.</p>`;
                         document.querySelector(".boy").innerHTML = "";
                         player.items.push('Monastary Key');
-                        document.querySelector(".eventInfo").innerHTML = doneString;
+                        this.eventCompleted = true;
                     }
                 } else {
                     document.querySelector(".eventInfo").innerHTML = 
