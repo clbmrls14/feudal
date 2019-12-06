@@ -329,7 +329,7 @@ var areas = {
                         glimmering in the knights stiff hand. You open his curled fingers to find a gold 
                         piece.</p>
                         <p>You pocket the gold and bury the corpse.</p>
-                        <p>You gain 1 gold.</p>`
+                        <p style="color:goldenrod">You gain 1 gold.</p>`
                         map[1][4].eventCompleted = true;
                         player.money += 1;
                         
