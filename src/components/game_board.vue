@@ -133,6 +133,8 @@
             <p>Items: {{player.items}}</p>
             <p>Weapon: {{player.weapon.name}}</p>
             <p class="boy" style="color:blue"></p>
+            <button onclick="save()">save</button>
+            <button onclick="load()">load</button>
         </div>
     </div>
 <footer>By Caleb Morales and Jaaron Nielsen</footer>
@@ -140,6 +142,7 @@
 </template>
 
 <script>
+import functions from '../data/function';
 import game from '../data/tile';
 import map_grid from '../data/game_map';
 import fig_board from '../data/figure_board';
@@ -150,6 +153,7 @@ function eventCheck (x,y) {
         map_grid[x][y].event()
     }
 
+
 export default {
     name: 'game_board',
         data () {
@@ -157,7 +161,8 @@ export default {
                 map_grid,
                 fig_board,
                 game,
-                player
+                player,
+                functions
             }
         },
     methods: {
