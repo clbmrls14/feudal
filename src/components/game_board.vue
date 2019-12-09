@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import functions from '../data/function';
+
 import game from '../data/tile';
 import map_grid from '../data/game_map';
 import fig_board from '../data/figure_board';
@@ -152,7 +152,13 @@ function eventCheck (x,y) {
         //alert("Event Check Called")
         map_grid[x][y].event()
     }
-
+window.save = function() {
+         alert("you saved the game");
+    }
+    
+window.load = function(){
+         alert("you loaded a saved game");
+    }
 
 export default {
     name: 'game_board',
@@ -161,8 +167,8 @@ export default {
                 map_grid,
                 fig_board,
                 game,
-                player,
-                functions
+                player
+               
             }
         },
     methods: {
