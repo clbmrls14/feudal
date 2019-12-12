@@ -7,6 +7,8 @@
 
 <script>
 import game_board from './components/game_board.vue'
+window.$ = require('jquery')
+window.JQuery = require('jquery')
 
 export default {
   name: 'app',

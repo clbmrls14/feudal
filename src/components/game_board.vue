@@ -2,6 +2,7 @@
 <main @click="checkHealth()">
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet"> 
+    <!-- Access-Control-Allow-Origin: localhost:8080/* -->
     <h1>The Throne of Rot</h1>
     <h2>Sent to a desolate kingdom, you've been tasked to take the throne.</h2>
     <div id="board">
@@ -133,8 +134,8 @@
             <p>Items: {{player.items}}</p>
             <p>Weapon: {{player.weapon.name}}</p>
             <p class="boy" style="color:blue"></p>
-            <button onclick="save()">save</button>
-            <button onclick="load()">load</button>
+            <button onclick="save()">Save</button>
+            <button onclick="load()">Load</button>
         </div>
     </div>
 <footer>By Caleb Morales and Jaaron Nielsen</footer>
@@ -149,15 +150,21 @@ import fig_board from '../data/figure_board';
 import player from '../data/player';
 
 function eventCheck (x,y) {
-        //alert("Event Check Called")
         map_grid[x][y].event()
     }
 window.save = function() {
-         alert("you saved the game");
+        alert("you saved the game");
+        // var corsAttr = new EnableCorsAttribute("*", "*", "*");
+        // config.EnableCors(corsAttr);
+        $.get("http://localhost:8080/rot/save");
+
     }
     
 window.load = function(){
-         alert("you loaded a saved game");
+        alert("you loaded a saved game"); 
+        // var corsAttr = new EnableCorsAttribute("*", "*", "*");
+        // config.EnableCors(corsAttr);
+        $.get("http://localhost:8080/rot/loads");
     }
 
 export default {

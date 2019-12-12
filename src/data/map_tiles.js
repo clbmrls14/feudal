@@ -9,6 +9,7 @@ window.random = function (min, max) {
 }
 
 window.clean = function () {
+    document.querySelector(".eventInfo").innerHTML = "";
     document.querySelector(".playerattack").innerHTML = "";
     document.querySelector(".enemyattack").innerHTML = "";
     document.querySelector(".buttons").innerHTML = "";
@@ -28,6 +29,7 @@ var areas = {
             eventCompleted: false,
             usurperHealth: 14,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     window.kingSlay = function() {
                         window.clean();
@@ -133,6 +135,7 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     document.querySelector(".eventInfo").innerHTML =
                     `<p>To the east lies an old castle, smoke rising from its courtyard.</p>
@@ -154,6 +157,7 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
+                window.clean();
                 document.querySelector(".eventInfo").innerHTML =
                     `You're as far north as you can go, and you're starting to feel the cold in your bones.`;
             }
@@ -172,6 +176,7 @@ var areas = {
             eventCompleted: false,
             graveHealth: 9,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     window.graveFight = function() {
                         var damage = window.random(1,3);
@@ -380,8 +385,8 @@ var areas = {
             merchantHelped: false,
             event: function() {
                 window.clean();
-                if (!this.eventCompleted) {
-                    if (this.merchantHelped) {
+                if (this.merchantHelped) {
+                    if (!this.eventCompleted) {
                     document.querySelector(".eventInfo").innerHTML = 
                     `<p>The merchant that was stuck in the mud approaches you and offers to heal you
                     since you helped him.</p>`;
@@ -506,6 +511,7 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     window.d1 = function() {
                         document.querySelector(".eventInfo").innerHTML = `
@@ -537,6 +543,7 @@ var areas = {
             eventCompleted: false,
             scrollGot: false,
             event: function() {
+                window.clean();
                 window.monastary = function() {
                     document.querySelector(".eventInfo").innerHTML =
                     `<p>You head uphill to where the monastary is located. It's clear nobody has been here 
@@ -605,6 +612,7 @@ var areas = {
             tile_type: tiles.tile[0],
             eventCompleted: false,
             event: function() {
+                window.clean();
                 window.eatFruit = function() {
                     document.querySelector(".eventInfo").innerHTML =
                     `<p>You pick some fruit and eat it in a small moment of tranquility.</p>
@@ -648,6 +656,7 @@ var areas = {
             eventCompleted: false,
             ratHealth: 6,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     window.ratFight = function() {
                         var damage = window.random(0,1);
@@ -776,6 +785,7 @@ var areas = {
             eventCompleted: false,
             womanVisited: true,
             event: function() {
+                window.clean();
                 if (!this.eventCompleted) {
                     if (!map[2][3].eventCompleted) {
                         document.querySelector(".eventInfo").innerHTML = 
