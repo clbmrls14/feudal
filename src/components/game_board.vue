@@ -5,7 +5,7 @@
     <!-- Access-Control-Allow-Origin: localhost:8080/* -->
     <h1>The Throne of Rot</h1>
     <h2>Sent to a desolate kingdom, you've been tasked to take the throne.</h2>
-    <div id="board">
+    <div class="grid-container">
         <!-- Column 1 -->
         <div class="a1" @click="move(0, 0)">
             <img class="tile_img" :src="map_grid[0][0].tile_type.src">
@@ -231,7 +231,7 @@ export default {
         font-family: 'Cinzel Decorative', cursive;
         padding: 0.5em;
     }
-    div#board {
+    .grid-container {
         display: grid;
         grid-template-columns: 10em 10em 10em 10em 10em 20em;
         grid-template-rows: 10em 10em 10em 10em 10em;
