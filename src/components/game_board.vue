@@ -241,8 +241,6 @@ export default {
             'c1 c2 c3 c4 c5 mh'
             'd1 d2 d3 d4 d5 ph'
             'e1 e2 e3 e4 e5 ph'
-            'x  x  x  x  x  x'
-            
         ;
         grid-gap: 10px;
         justify-content: center;
