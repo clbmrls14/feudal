@@ -134,8 +134,8 @@
             <p>Items: {{player.items}}</p>
             <p>Weapon: {{player.weapon.name}}</p>
             <p class="boy" style="color:blue"></p>
-            <button onclick="save()">Save</button>
-            <button onclick="load()">Load</button>
+            <!-- <button onclick="save()">Save</button>
+            <button onclick="load()">Load</button> -->
         </div>
     </div>
 <footer>By Caleb Morales and Jaaron Nielsen</footer>
