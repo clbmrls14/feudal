@@ -154,16 +154,12 @@ function eventCheck (x,y) {
     }
 window.save = function() {
         alert("you saved the game");
-        // var corsAttr = new EnableCorsAttribute("*", "*", "*");
-        // config.EnableCors(corsAttr);
         $.get("http://localhost:8080/rot/save");
 
     }
     
 window.load = function(){
-        alert("you loaded a saved game"); 
-        // var corsAttr = new EnableCorsAttribute("*", "*", "*");
-        // config.EnableCors(corsAttr);
+        alert("you loaded a saved game");
         $.get("http://localhost:8080/rot/loads");
     }
 
@@ -198,21 +194,16 @@ export default {
                 var viabley2 = currenty - 1
 
                 if (((x === viablex1) && (y === currenty)) || ((x === viablex2) && (y === currenty))) {
-                    //alert("This area is passable at: " + x + " " + y)
                     fig_board[x][y] = 1
                     fig_board[currentx][currenty] = 0
                     eventCheck(x,y)
                 } else {
                     if (((x === currentx) && (y === viabley1)) || ((x === currentx) && (y === viabley2))) {
-                        //alert("This area is passable at: " + x + " " + y)
-                        fig_board[x][y] = 1
                         fig_board[currentx][currenty] = 0
                         eventCheck(x,y)
                     }
                 }
-            } else {
-                //alert("This area is impassable")
-            }
+            } else {}
             this.$forceUpdate();
         },
         checkHealth () {
